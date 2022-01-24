@@ -1,0 +1,25 @@
+// Reboot
+//
+
+b,
+strong {
+  font-weight: $font-weight-bold;
+}
+
+@include rtl-only {
+  dd {
+    margin-right: 0;
+  }
+  caption {
+    text-align: right;
+  }
+}
+
+@if $dark-style {
+  select:not([multiple]):not([size]),
+  select[size="1"] {
+    option {
+      color: $black;
+    }
+  }
+}

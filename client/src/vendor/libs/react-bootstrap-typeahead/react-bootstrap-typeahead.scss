@@ -1,0 +1,554 @@
+@import '../../styles/_custom-variables/libs';
+
+.rbt {
+  outline: none !important;
+
+  .dropdown-menu {
+    animation-name: rbt-dropdownAnimation !important;
+  }
+}
+
+.rbt-menu > li a {
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  &:focus {
+    outline: none !important;
+  }
+}
+
+// Hide hint in RTL mode since it's not positioned properly
+@include feature-rtl(false) {
+  .rbt-input-hint {
+    visibility: hidden;
+  }
+}
+
+.rbt-menu-pagination-option {
+  text-align: center;
+}
+
+.rbt .rbt-input-main::-ms-clear {
+  display: none;
+}
+
+.rbt-input-multi {
+  cursor: text;
+  overflow: hidden;
+  position: relative;
+  height: auto;
+
+  .rbt-input-wrapper {
+    margin-bottom: -.25rem;
+    margin-top: -.0625rem;
+    overflow: hidden;
+  }
+
+  .rbt-input-main,
+  &.form-control-lg .rbt-input-main,
+  &.form-control-sm .rbt-input-main {
+    height: auto;
+  }
+
+  .rbt-input-main {
+    margin: .0625rem 0 .25rem;
+  }
+
+  .rbt-input-hint-container {
+    display: inline-block;
+  }
+}
+
+.rbt-token {
+  border: 0;
+  border-radius: .125rem;
+  display: inline-block;
+  line-height: 1em;
+  margin: 0 .1875rem .1875rem 0;
+  padding: .25rem .4375rem;
+  position: relative;
+
+  @include feature-rtl {
+    margin-right: 0;
+    margin-left: .1875rem;
+  }
+
+  .rbt-token-remove-button {
+    bottom: 0;
+    color: inherit;
+    font-size: inherit;
+    font-weight: normal;
+    opacity: 1;
+    outline: none;
+    padding: .1875rem .4375rem;
+    position: absolute;
+    right: 0;
+    text-shadow: none;
+    top: -.0625rem;
+
+    @include feature-rtl {
+      right: auto;
+      left: 0;
+    }
+  }
+}
+
+.rbt-token-disabled {
+  background-color: rgba(#000, .075);
+  color: inherit !important;
+  pointer-events: none;
+}
+
+.rbt-token-removeable {
+  cursor: pointer;
+  padding-right: 1.3125rem;
+
+  @include feature-rtl {
+    padding-left: 1.3125rem;
+    padding-right: .4375rem;
+  }
+}
+
+.rbt-token-active {
+  outline: none !important;
+  text-decoration: none;
+}
+
+.rbt-loader {
+  animation: loader-animation 600ms infinite linear;
+  border: 2px solid rgba(#000, .1);
+  border-radius: 50%;
+  display: block;
+  height: 1rem;
+  width: 1rem;
+
+  @include feature-rtl {
+    animation-direction: reverse;
+  }
+}
+
+.rbt-loader-lg {
+  height: 1.25rem;
+  width: 1.25rem;
+}
+
+.rbt-aux {
+  display: flex;
+  align-items: center;
+  bottom: 0;
+  justify-content: center;
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 2.125rem;
+
+  @include feature-rtl {
+    right: auto;
+    left: 0;
+  }
+
+  .rbt-close {
+    margin-top: -.25rem;
+    pointer-events: auto;
+  }
+
+  .material-style & {
+    width: 1.25rem;
+    justify-content: flex-end;
+  }
+}
+
+.rbt-close {
+  z-index: 1;
+}
+
+.rbt-close-lg {
+  font-size: 1.5rem;
+}
+
+.rbt-aux-lg {
+  width: 2.875rem;
+
+  .material-style & {
+    width: 1.75rem;
+  }
+}
+
+.rbt.has-aux .rbt-input {
+  @include feature-ltr {
+    padding-right: 2.125rem !important;
+
+    &.form-control-lg {
+      padding-right: 2.875rem !important;
+    }
+  }
+
+  @include feature-rtl {
+    padding-left: 2.125rem !important;
+
+    &.form-control-lg {
+      padding-left: 2.875rem !important;
+    }
+  }
+}
+
+.rbt-highlight-text {
+  background-color: transparent;
+  color: inherit;
+  font-weight: bold;
+  padding: 0;
+}
+
+.input-group > .rbt {
+  flex: 1;
+
+  .rbt-aux,
+  .rbt-input-hint {
+    z-index: 5;
+  }
+
+  @include feature-ltr {
+    &:not(:first-child) .form-control {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+    &:not(:last-child) .form-control {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+  }
+  @include feature-rtl {
+    &:not(:first-child) .form-control {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+    &:not(:last-child) .form-control {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+  }
+}
+.input-group {
+  > .rbt:not(:first-child),
+  > .rbt + * {
+    @include feature-ltr {
+      margin-left: -1px;
+    }
+    @include feature-rtl {
+      margin-right: -1px;
+    }
+  }
+}
+
+@keyframes rbt-dropdownAnimation {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes rbt-dropdownAnimation {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes loader-animation {
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+@-webkit-keyframes loader-animation {
+  to {
+    -webkit-transform: rotate(1turn);
+  }
+}
+
+@if $enable-light-style {
+  .light-style {
+    @import "../../styles/_appwork/include";
+
+    .rbt input {
+      color: $input-color;
+    }
+
+    .rbt input::-moz-placeholder {
+      color: $input-placeholder-color;
+      opacity: 1;
+    }
+
+    .rbt input:-ms-input-placeholder {
+      color: $input-placeholder-color;
+    }
+
+    .rbt input::-webkit-input-placeholder {
+      color: $input-placeholder-color;
+    }
+
+    .rbt-input-multi {
+      min-height: $input-height;
+
+      &.form-control-sm {
+        min-height: $input-height-sm;
+      }
+
+      &.form-control-lg {
+        min-height: $input-height-lg;
+      }
+    }
+
+    .rbt-input-multi[disabled] {
+      cursor: default;
+      background: $input-disabled-bg;
+    }
+
+    .rbt-input-multi.is-invalid.focus {
+      border-color: map-get(map-get($form-validation-states, 'invalid'), 'color');
+    }
+
+    .rbt-input-multi.is-valid.focus {
+      border-color: map-get(map-get($form-validation-states, 'valid'), 'color');
+    }
+
+    .rbt-input-multi.form-control {
+      padding-left: $input-padding-y;
+      padding-right: $input-padding-y;
+    }
+
+    .rbt-input-multi.form-control-sm {
+      padding-left: $input-padding-y-sm;
+      padding-right: $input-padding-y-sm;
+    }
+
+    .rbt-input-multi.form-control-lg {
+      padding-left: $input-padding-y-lg;
+      padding-right: $input-padding-y-lg;
+    }
+  }
+}
+
+@if $enable-material-style {
+  .material-style {
+    @import "../../styles/_appwork/include-material";
+
+    .rbt input {
+      color: $input-color;
+    }
+
+    .rbt input::-moz-placeholder {
+      color: $input-placeholder-color;
+      opacity: 1;
+    }
+
+    .rbt input:-ms-input-placeholder {
+      color: $input-placeholder-color;
+    }
+
+    .rbt input::-webkit-input-placeholder {
+      color: $input-placeholder-color;
+    }
+
+    .rbt-input-multi {
+      min-height: $input-height;
+
+      &.form-control-sm {
+        min-height: $input-height-sm;
+      }
+
+      &.form-control-lg {
+        min-height: $input-height-lg;
+      }
+    }
+
+    .rbt-input-multi[disabled] {
+      cursor: default;
+      border-bottom: 1px dotted $material-input-disabled-border-color;
+      color: $material-input-disabled-color;    
+    }
+
+    .rbt-input-multi.is-invalid.focus {
+      border-color: map-get(map-get($form-validation-states, 'invalid'), 'color');
+    }
+
+    .rbt-input-multi.is-valid.focus {
+      border-color: map-get(map-get($form-validation-states, 'valid'), 'color');
+    }
+
+    .input-group > .rbt .form-control {
+      padding-left: $input-padding-x;
+      padding-right: $input-padding-x;
+    }
+    .input-group > .rbt .form-control-lg {
+      padding-left: $input-padding-x-lg;
+      padding-right: $input-padding-x-lg;
+    }
+    .input-group > .rbt .form-control-sm {
+      padding-left: $input-padding-x-sm;
+      padding-right: $input-padding-x-sm;
+    }
+
+    @include feature-ltr-style {
+      .input-group > .rbt.has-aux:not(:last-child) {
+        .form-control {
+          padding-right: 1.25rem + $input-padding-x;
+
+          &.form-control-lg {
+            padding-right: 1.75rem + $input-padding-x-lg;
+          }
+        }
+        .rbt-aux {
+          right: $input-padding-x;
+        }
+        .rbt-aux-lg {
+          right: $input-padding-x-lg;
+        }
+      }
+
+      .rbt.has-aux .rbt-input {
+        padding-right: 1.25rem !important;
+
+        &.form-control-lg {
+          padding-right: 1.75rem !important;
+        }
+      }
+
+      .input-group > .rbt:not(:first-child),
+      .input-group > .rbt + * {
+        > .rbt {
+          &:first-child .form-control {
+            padding-left: 0;
+          }
+          &:last-child .form-control {
+            padding-right: 0;
+          }
+        }
+
+        > .rbt + .rbt .form-control,
+        > .rbt + .form-control,
+        > .form-control + .rbt .form-control,
+        > .rbt + .custom-select,
+        > .custom-select + .rbt .form-control {
+          padding-left: 0;
+        }
+      }
+    }
+
+    @include feature-rtl-style {
+      .input-group > .rbt.has-aux:not(:last-child) {
+        .form-control {
+          padding-left: 1.25rem + $input-padding-x;
+
+          &.form-control-lg {
+            padding-left: 1.75rem + $input-padding-x-lg;
+          }
+        }
+        .rbt-aux {
+          left: $input-padding-x;
+        }
+        .rbt-aux-lg {
+          left: $input-padding-x-lg;
+        }
+      }
+
+      .rbt.has-aux .rbt-input {
+        padding-left: 1.25rem !important;
+
+        &.form-control-lg {
+          padding-left: 1.75rem !important;
+        }
+      }
+
+      .input-group > .rbt:not(:first-child),
+      .input-group > .rbt + * {
+        > .rbt {
+          &:first-child .form-control {
+            padding-right: 0;
+          }
+          &:last-child .form-control {
+            padding-left: 0;
+          }
+        }
+
+        > .rbt + .rbt .form-control,
+        > .rbt + .form-control,
+        > .form-control + .rbt .form-control,
+        > .rbt + .custom-select,
+        > .custom-select + .rbt .form-control {
+          padding-right: 0;
+        }
+      }
+    }
+  }
+}
+
+@if $enable-dark-style {
+  .dark-style {
+    @import "../../styles/_appwork/include-dark";
+
+    .rbt input {
+      color: $input-color;
+    }
+
+    .rbt input::-moz-placeholder {
+      color: $input-placeholder-color;
+      opacity: 1;
+    }
+
+    .rbt input:-ms-input-placeholder {
+      color: $input-placeholder-color;
+    }
+
+    .rbt input::-webkit-input-placeholder {
+      color: $input-placeholder-color;
+    }
+
+    .rbt-input-multi {
+      min-height: $input-height;
+
+      &.form-control-sm {
+        min-height: $input-height-sm;
+      }
+
+      &.form-control-lg {
+        min-height: $input-height-lg;
+      }
+    }
+
+    .rbt-input-multi[disabled] {
+      cursor: default;
+      background: $input-disabled-bg;
+    }
+
+    .rbt-input-multi.is-invalid.focus {
+      border-color: map-get(map-get($form-validation-states, 'invalid'), 'color');
+    }
+
+    .rbt-input-multi.is-valid.focus {
+      border-color: map-get(map-get($form-validation-states, 'valid'), 'color');
+    }
+
+    .rbt-input-multi.form-control {
+      padding-left: $input-padding-y;
+      padding-right: $input-padding-y;
+    }
+
+    .rbt-input-multi.form-control-sm {
+      padding-left: $input-padding-y-sm;
+      padding-right: $input-padding-y-sm;
+    }
+
+    .rbt-input-multi.form-control-lg {
+      padding-left: $input-padding-y-lg;
+      padding-right: $input-padding-y-lg;
+    }
+  }
+}

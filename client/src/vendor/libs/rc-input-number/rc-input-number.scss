@@ -1,0 +1,207 @@
+@import '../../styles/_custom-variables/libs';
+
+$rc-input-number-handler-width: 1.5rem !default;
+
+.rc-input-number {
+  display: flex;
+  flex-direction: row-reverse;
+  padding: 0;
+}
+
+.rc-input-number-input-wrap {
+  flex: 1 0 auto;
+}
+
+.rc-input-number-input {
+  border: 0;
+  background: transparent;
+  outline: none;
+  width: 100%;
+  height: 100%;
+}
+
+.rc-input-number-handler-wrap {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.rc-input-number-handler {
+  width: $rc-input-number-handler-width;
+  height: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.rc-input-number-handler-up-inner,
+.rc-input-number-handler-down-inner {
+  display: block;
+}
+
+.rc-input-number-handler-up-inner:after {
+  content: '+';
+}
+
+.rc-input-number-handler-down-inner:after {
+  content: '-';
+}
+
+.rc-input-number-disabled .rc-input-number-handler,
+.rc-input-number-handler-up-disabled,
+.rc-input-number-handler-down-disabled {
+  background: transparent !important;
+  cursor: default;
+  
+  > * {
+    opacity: .5;
+  }
+}
+
+@if $enable-light-style {
+  .light-style {
+    @import "../../styles/_appwork/include";
+
+    .rc-input-number-disabled {
+      background: $input-disabled-bg;
+    }
+
+    .rc-input-number-input {
+      padding: $input-padding-y $input-padding-x;
+      color: $input-color;
+    }
+
+    .form-control-sm .rc-input-number-input {
+      padding: $input-padding-y-sm $input-padding-x-sm;
+    }
+
+    .form-control-lg .rc-input-number-input {
+      padding: $input-padding-y-lg $input-padding-x-lg;
+    }
+
+    .rc-input-number-handler {
+      border-left: 1px solid $input-border-color;
+      color: $input-color;
+
+      &:hover {
+        background: $gray-50;
+      }
+    }
+
+    .rc-input-number-handler-up {
+      border-bottom: 1px solid $input-border-color;
+      @include border-top-left-radius(calc(#{$input-border-radius} - 1px));
+    }
+
+    .rc-input-number-handler-down {
+      @include border-bottom-left-radius(calc(#{$input-border-radius} - 1px));
+    }
+
+    @include feature-rtl-style {
+      .rc-input-number-handler {
+        border-left: 0;
+        border-right: 1px solid $input-border-color;
+      }
+
+      .rc-input-number-handler-up {
+        @include border-top-left-radius(0);
+        @include border-top-right-radius(calc(#{$input-border-radius} - 1px));
+      }
+
+      .rc-input-number-handler-down {
+        @include border-bottom-left-radius(0);
+        @include border-bottom-right-radius(calc(#{$input-border-radius} - 1px));
+      }
+    }
+  }
+}
+
+@if $enable-material-style {
+  .material-style {
+    @import "../../styles/_appwork/include-material";
+  
+    .rc-input-number-input {
+      padding: $input-padding-y 0 calc(#{$input-padding-y} - 1px);
+      color: $input-color;
+    }
+
+    .rc-input-number-disabled .rc-input-number-input {
+      color: $material-input-disabled-color;
+    }
+
+    .form-control-sm .rc-input-number-input {
+      padding: $input-padding-y-sm 0 calc(#{$input-padding-y-sm} - 1px);
+    }
+
+    .form-control-lg .rc-input-number-input {
+      padding: $input-padding-y-lg 0 calc(#{$input-padding-y-lg} - 1px);
+    }
+
+    .rc-input-number-handler {
+      color: $input-color;
+
+      &:hover {
+        background: $gray-50;
+      }
+    }
+  }
+}
+
+@if $enable-dark-style {
+  .dark-style {
+    @import "../../styles/_appwork/include-dark";
+
+    .rc-input-number-disabled {
+      background: $input-disabled-bg;
+    }
+
+    .rc-input-number-input {
+      padding: $input-padding-y $input-padding-x;
+      color: $input-color;
+    }
+
+    .form-control-sm .rc-input-number-input {
+      padding: $input-padding-y-sm $input-padding-x-sm;
+    }
+
+    .form-control-lg .rc-input-number-input {
+      padding: $input-padding-y-lg $input-padding-x-lg;
+    }
+
+    .rc-input-number-handler {
+      border-left: 1px solid $input-border-color;
+      color: $input-color;
+
+      &:hover {
+        background: $gray-50;
+      }
+    }
+
+    .rc-input-number-handler-up {
+      border-bottom: 1px solid $input-border-color;
+      @include border-top-left-radius(calc(#{$input-border-radius} - 1px));
+    }
+
+    .rc-input-number-handler-down {
+      @include border-bottom-left-radius(calc(#{$input-border-radius} - 1px));
+    }
+
+    @include feature-rtl-style {
+      .rc-input-number-handler {
+        border-left: 0;
+        border-right: 1px solid $input-border-color;
+      }
+
+      .rc-input-number-handler-up {
+        @include border-top-left-radius(0);
+        @include border-top-right-radius(calc(#{$input-border-radius} - 1px));
+      }
+
+      .rc-input-number-handler-down {
+        @include border-bottom-left-radius(0);
+        @include border-bottom-right-radius(calc(#{$input-border-radius} - 1px));
+      }
+    }
+  }
+}

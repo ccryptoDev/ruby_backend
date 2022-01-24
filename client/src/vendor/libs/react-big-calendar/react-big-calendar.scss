@@ -1,0 +1,233 @@
+@import '../../styles/_custom-variables/libs';
+@import "~react-big-calendar/lib/sass/styles";
+
+.rbc-event {
+  color: inherit;
+  
+  &, * {
+    outline: 0 !important;
+  }
+
+  &.rbc-selected {
+    z-index: 10;
+  }
+}
+
+.rbc-header {
+  text-transform: uppercase;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+}
+
+.rbc-time-header-cell {
+  flex-shrink: 0;
+}
+
+.rbc-month-view,
+.rbc-time-view,
+.rbc-agenda-view,
+.rbc-time-view-resources {
+  height: auto;
+  min-height: 1px;
+}
+
+@include feature-rtl(false) {
+  .rbc-day-slot .rbc-events-container {
+    margin-left: 10px;
+    margin-right: 0;
+  }
+}
+
+.rbc-timeslot-group .rbc-time-slot:first-child {
+  border-top: none;
+}
+
+@if $enable-light-style {
+  .light-style {
+    @import "../../styles/_appwork/include";
+    @import 'mixins';
+
+    .rbc-header,
+    .rbc-month-view,
+    .rbc-time-view,
+    .rbc-time-content,
+    .rbc-agenda-view table.rbc-agenda-table,
+    .rbc-agenda-view table.rbc-agenda-table tbody>tr,
+    .rbc-agenda-view table.rbc-agenda-table tbody>tr>td,
+    .rbc-agenda-view table.rbc-agenda-table thead>tr>th,
+    .rbc-month-row,
+    .rbc-day-bg,
+    .rbc-timeslot-group,
+    .rbc-day-slot .rbc-time-slot,
+    .rbc-time-view-resources .rbc-time-gutter,
+    .rbc-time-view-resources .rbc-time-header-gutter,
+    .rbc-time-view .rbc-allday-cell,
+    .rbc-time-header.rbc-overflowing,
+    .rbc-time-header>.rbc-row:first-child,
+    .rbc-time-header>.rbc-row.rbc-row-resource,
+    .rbc-time-header-content,
+    .rbc-time-header-content>.rbc-row.rbc-row-resource,
+    .rbc-time-content>*+*>* {
+      border-color: $table-border-color !important;
+    }
+
+    .rbc-header {
+      font-weight: $font-weight-semibold;
+      font-size: $font-size-sm;
+      background: $table-accent-bg;
+      line-height: $line-height-sm;
+    }
+
+    .rbc-off-range-bg {
+      background-color: $gray-25;
+      color: $text-muted;
+    }
+
+    .rbc-event {
+      font-size: $font-size-sm;
+      line-height: $line-height-sm;
+    }
+
+    .rbc-date-cell.rbc-now {
+      font-weight: $font-weight-semibold;
+    }
+
+    .rbc-event-label {
+      font-size: 100%;
+      font-weight: $font-weight-semibold;
+    }
+
+    @each $color, $value in $theme-colors {
+      @if $color != primary {
+        @include react-big-calendar-event-variant($color, $value);
+      }
+    }
+  }
+}
+
+@if $enable-material-style {
+  .material-style {
+    @import "../../styles/_appwork/include-material";
+    @import 'mixins';
+
+    .rbc-header,
+    .rbc-month-view,
+    .rbc-time-view,
+    .rbc-time-content,
+    .rbc-agenda-view table.rbc-agenda-table,
+    .rbc-agenda-view table.rbc-agenda-table tbody>tr,
+    .rbc-agenda-view table.rbc-agenda-table tbody>tr>td,
+    .rbc-agenda-view table.rbc-agenda-table thead>tr>th,
+    .rbc-month-row,
+    .rbc-day-bg,
+    .rbc-timeslot-group,
+    .rbc-day-slot .rbc-time-slot,
+    .rbc-time-view-resources .rbc-time-gutter,
+    .rbc-time-view-resources .rbc-time-header-gutter,
+    .rbc-time-view .rbc-allday-cell,
+    .rbc-time-header.rbc-overflowing,
+    .rbc-time-header>.rbc-row:first-child,
+    .rbc-time-header>.rbc-row.rbc-row-resource,
+    .rbc-time-header-content,
+    .rbc-time-header-content>.rbc-row.rbc-row-resource,
+    .rbc-time-content>*+*>* {
+      border-color: $table-border-color !important;
+    }
+
+    .rbc-header {
+      font-weight: $font-weight-semibold;
+      font-size: $font-size-sm;
+      background: $table-accent-bg;
+      line-height: $line-height-sm;
+    }
+
+    .rbc-off-range-bg {
+      background-color: $gray-25;
+      color: $text-muted;
+    }
+
+    .rbc-event {
+      font-size: $font-size-sm;
+      line-height: $line-height-sm;
+    }
+
+    .rbc-date-cell.rbc-now {
+      font-weight: $font-weight-semibold;
+    }
+
+    .rbc-event-label {
+      font-size: 100%;
+      font-weight: $font-weight-semibold;
+    }
+
+    @each $color, $value in $theme-colors {
+      @if $color != primary {
+        @include react-big-calendar-event-variant($color, $value);
+      }
+    }
+  }
+}
+
+@if $enable-dark-style {
+  .dark-style {
+    @import "../../styles/_appwork/include-dark";
+    @import 'mixins';
+
+    .rbc-header,
+    .rbc-month-view,
+    .rbc-time-view,
+    .rbc-time-content,
+    .rbc-agenda-view table.rbc-agenda-table,
+    .rbc-agenda-view table.rbc-agenda-table tbody>tr,
+    .rbc-agenda-view table.rbc-agenda-table tbody>tr>td,
+    .rbc-agenda-view table.rbc-agenda-table thead>tr>th,
+    .rbc-month-row,
+    .rbc-day-bg,
+    .rbc-timeslot-group,
+    .rbc-day-slot .rbc-time-slot,
+    .rbc-time-view-resources .rbc-time-gutter,
+    .rbc-time-view-resources .rbc-time-header-gutter,
+    .rbc-time-view .rbc-allday-cell,
+    .rbc-time-header.rbc-overflowing,
+    .rbc-time-header>.rbc-row:first-child,
+    .rbc-time-header>.rbc-row.rbc-row-resource,
+    .rbc-time-header-content,
+    .rbc-time-header-content>.rbc-row.rbc-row-resource,
+    .rbc-time-content>*+*>* {
+      border-color: $table-border-color !important;
+    }
+
+    .rbc-header {
+      font-weight: $font-weight-semibold;
+      font-size: $font-size-sm;
+      background: $table-accent-bg;
+      line-height: $line-height-sm;
+    }
+
+    .rbc-off-range-bg {
+      background-color: $gray-25;
+      color: $text-muted;
+    }
+
+    .rbc-event {
+      font-size: $font-size-sm;
+      line-height: $line-height-sm;
+    }
+
+    .rbc-date-cell.rbc-now {
+      font-weight: $font-weight-semibold;
+    }
+
+    .rbc-event-label {
+      font-size: 100%;
+      font-weight: $font-weight-semibold;
+    }
+
+    @each $color,
+    $value in $theme-colors {
+      @if $color !=primary {
+        @include react-big-calendar-event-variant($color, $value, .5);
+      }
+    }
+  }
+}

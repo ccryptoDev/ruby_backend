@@ -1,0 +1,37 @@
+$orange: #ff6c4b;
+
+.settingsWrapper {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 20px;
+}
+
+.tabContent {
+  max-width: 800px;
+  margin-top: 20px;
+  padding: 20px;
+}
+
+.emphasizedCopy {
+  color: $orange;
+}
+
+.creditRegimenSteps {
+  margin: 45px 0;
+  .step {
+    margin-right: 45px;
+  }
+  .stepTitle {
+    color: rgba(30, 42, 70, 0.5);
+    margin-bottom: 32px;
+  }
+}
+
+.updatedValue {
+  font-size: 36px;
+  font-weight: 400;
+}
+
+.stepCopy {
+  margin-bottom: 16px;
+}

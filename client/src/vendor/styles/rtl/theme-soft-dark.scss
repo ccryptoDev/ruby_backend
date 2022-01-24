@@ -1,0 +1,43 @@
+$rtl-support: true;
+
+@import "../_appwork/include-dark";
+@import "../_theme/common";
+@import "../_theme/libs";
+@import "../_theme/uikit";
+
+$primary-color: #1cbb84;
+
+@include appwork-common-dark-theme($primary-color);
+@include appwork-libs-dark-theme($primary-color);
+@include appwork-uikit-dark-theme($primary-color);
+
+// Navbar
+
+@include appwork-navbar-variant('.bg-navbar-theme', #39517b);
+
+// Sidenav
+
+@include appwork-sidenav-variant('.bg-sidenav-theme', #E9E9EA, $color: rgba(0, 0, 0, .35), $active-color: #4E5155, $menu-bg: darken(#E9E9EA, 2.5%));
+
+.bg-sidenav-theme {
+  .sidenav-inner > .sidenav-item > .sidenav-link .sidenav-icon,
+  .sidenav-inner > .sidenav-item > .sidenav-link:hover .sidenav-icon,
+  .sidenav-inner > .sidenav-item > .sidenav-link:focus .sidenav-icon {
+    color: #c9ced6;
+  }
+  .sidenav-inner > .sidenav-item.active > .sidenav-link .sidenav-icon {
+    color: $primary-color !important;
+  }
+  .sidenav-item.active > .sidenav-link:not(.sidenav-toggle) {
+    color: $primary-color !important;
+    background: none !important;
+  }
+}
+
+// Footer
+
+@include appwork-footer-variant('.bg-footer-theme', $body-bg, $color: $text-muted, $active-color: $body-color);
+
+.layout-footer {
+  box-shadow: 0 -1px 0 $border-color;
+}

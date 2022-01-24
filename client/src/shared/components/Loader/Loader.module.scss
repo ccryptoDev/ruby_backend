@@ -1,0 +1,45 @@
+@-webkit-keyframes RouterLoaderAnimation {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+@-moz-keyframes RouterLoaderAnimation {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+@keyframes RouterLoaderAnimation {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.Container {
+  position: fixed;
+  z-index: 99999999;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 0;
+  background: rgba(#fff, .25);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: RouterLoaderAnimation .2s;
+  animation-fill-mode: forwards;
+}
+:global(.dark-style) .Container {
+  background: rgba(#25282E, .25);
+}
+
+.Spinner {
+  display: block;
+}
+
+.SpinnerEl {
+  border-width: 2px !important;
+  width: 3rem !important;
+  height: 3rem !important;
+}
+
+:global(.app-loading) .Container {
+  display: none;
+}

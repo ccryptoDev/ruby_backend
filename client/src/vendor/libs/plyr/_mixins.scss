@@ -1,0 +1,48 @@
+@mixin plyr-theme($background, $color: null) {
+  $color: if($color, $color, yiq($background));
+
+  .plyr[class] {
+    .plyr__control--overlaid {
+      background: rgba($background, .75) !important;
+      color: $color !important;
+    }
+
+    .plyr__control.plyr__tab-focus,
+    .plyr__control:hover,
+    .plyr__control[aria-expanded='true'] {
+      background: $background !important;
+      color: $color !important;
+    }
+
+    .plyr__menu__container .plyr__control[role='menuitemradio'][aria-checked='true']:not(.plyr__tab-focus):not(:hover) {
+      &::before {
+        background: $background !important;
+      }
+      &::after {
+        background: $color !important;
+      }
+    }
+
+    .plyr__control.plyr__tab-focus {
+      box-shadow: 0 0 0 $component-focus-shadow-width rgba($background, .4) !important;
+    }
+  }
+
+  .plyr--full-ui[class] input[type='range'] {
+    color: $background !important;
+  }
+
+  .plyr--full-ui[class] input[type='range'].plyr__tab-focus {
+    &::-webkit-slider-runnable-track {
+      box-shadow: 0 0 0 $component-focus-shadow-width rgba($background, .4) !important;
+    }
+
+    &::-moz-range-track {
+      box-shadow: 0 0 0 $component-focus-shadow-width rgba($background, .4) !important;
+    }
+
+    &::-ms-track {
+      box-shadow: 0 0 0 $component-focus-shadow-width rgba($background, .4) !important;
+    }
+  }
+}

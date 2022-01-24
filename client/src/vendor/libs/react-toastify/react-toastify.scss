@@ -1,0 +1,94 @@
+@import '../../styles/_custom-variables/libs';
+@import '~react-toastify/dist/ReactToastify.css';
+
+.Toastify__toast {
+  min-height: 0;
+  padding: 15px;
+  margin-bottom: 0.5rem;
+  font-family: inherit;
+}
+
+.Toastify__toast-body {
+  margin: 0;
+}
+
+.Toastify__close-button {
+  color: inherit;
+}
+
+.Toastify__progress-bar {
+  height: .1875rem;
+  opacity: .4 !important;
+  bottom: auto;
+  top: 0;
+}
+
+.Toastify__close-button {
+  font-size: 1rem;
+  line-height: 1;
+  align-self: center;
+  outline: 0 !important;
+}
+
+@if $enable-light-style {
+  .light-style {
+    @import "../../styles/_appwork/include";
+    @import './mixins';
+
+    .Toastify__toast-container {
+      z-index: $zindex-notification;
+    }
+
+    .Toastify__toast {
+      border-radius: $border-radius;
+      box-shadow: $modal-content-box-shadow-xs !important;
+    }
+
+    @include react-toastify-variant('info', map-get($theme-colors, info));
+    @include react-toastify-variant('success', map-get($theme-colors, success));
+    @include react-toastify-variant('warning', map-get($theme-colors, warning));
+    @include react-toastify-variant('error', map-get($theme-colors, danger));
+  }
+}
+
+@if $enable-material-style {
+  .material-style {
+    @import "../../styles/_appwork/include-material";
+    @import './mixins';
+
+    .Toastify__toast-container {
+      z-index: $zindex-notification;
+    }
+
+    .Toastify__toast {
+      border-radius: $border-radius;
+      box-shadow: $modal-content-box-shadow-xs !important;
+    }
+
+    @include react-toastify-variant('info', map-get($theme-colors, info));
+    @include react-toastify-variant('success', map-get($theme-colors, success));
+    @include react-toastify-variant('warning', map-get($theme-colors, warning));
+    @include react-toastify-variant('error', map-get($theme-colors, danger));
+  }
+}
+
+@if $enable-dark-style {
+  .dark-style {
+    @import "../../styles/_appwork/include-dark";
+    @import './mixins';
+
+    .Toastify__toast-container {
+      z-index: $zindex-notification;
+    }
+
+    .Toastify__toast {
+      border-radius: $border-radius;
+      box-shadow: $modal-content-box-shadow-xs !important;
+    }
+
+    @include react-toastify-variant('info', map-get($theme-colors, info));
+    @include react-toastify-variant('success', map-get($theme-colors, success));
+    @include react-toastify-variant('warning', map-get($theme-colors, warning));
+    @include react-toastify-variant('error', map-get($theme-colors, danger));
+  }
+}

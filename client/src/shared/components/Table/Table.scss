@@ -1,0 +1,73 @@
+// custom table
+.table-layout {
+  flex: 1;
+  margin-top: 27px;
+  height: 100%;
+
+  .sub-title {
+    font-size: 13.5448px;
+    line-height: 17px;
+    color: rgba(30, 42, 70, 0.5);
+    padding-bottom: 13px;
+    border-bottom: 1px solid #D9DBDE;
+    display: flex;
+    align-items: center;
+
+    span {
+      text-align: left;
+    }
+    span:first-child {
+      flex-basis: 23%;
+    }
+    span:nth-child(2) {
+      flex-basis: 23%;
+      padding-right: 15px;
+    }
+    span:nth-child(3) {
+      flex-basis: 24%;
+    }
+    span:nth-child(4) {
+      flex-basis: 10%;
+    }
+  }
+  .details {
+    max-height: 20%;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    margin-right: -10px;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 21px;
+    color: #1E2A46;
+
+    .details-row {
+      border-bottom: 1px solid #D9DBDE;
+      padding-top: 16px;
+      padding-bottom: 16px;
+      display: flex;
+      align-items: center;
+
+      div {
+        text-align: left;
+        white-space: nowrap; 
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-size: 14px;
+        line-height: 18px;
+      }
+      div:first-child {
+        flex-basis: 23%;
+      }
+      div:nth-child(2) {
+        flex-basis: 23%;
+      }
+      div:nth-child(3) {
+        flex-basis: 24%;
+      }
+      div:nth-child(4) {
+        flex-basis: 30%;
+        text-transform: uppercase;
+      }
+    }
+  }
+}

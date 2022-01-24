@@ -1,0 +1,322 @@
+@import '../../styles/_custom-variables/libs';
+
+.react-bootstrap-table {
+  table {
+    // table-layout: fixed;
+  }
+
+  th.sortable {
+    cursor: pointer;
+  }
+
+  th .order-4,
+  th .caret-4-asc,
+  th .caret-4-desc {
+    &::before {
+      margin-left: 3.5px;
+      content: "\2191";
+      opacity: .4;
+
+      @include feature-rtl {
+        margin-left: 0;
+        margin-right: 3.5px;
+      }
+    }
+
+    &::after {
+      content: "\2193";
+      opacity: .4;
+      margin-left: -4px;
+
+      @include feature-rtl {
+        margin-left: 0;
+        margin-right: -4px;
+      }
+    }
+  }
+  
+  th .caret-4-asc:before {
+    opacity: 1;
+  }
+
+  th .caret-4-desc:after {
+    opacity: 1;
+  }
+
+  th[data-row-selection] {
+    width: 36px;
+  }
+
+  th > .selection-input-4,
+  td > .selection-input-4 {
+    display: inline-block;
+  }
+
+  td.react-bs-table-no-data {
+    text-align: center;
+  }
+
+  td.react-bootstrap-table-editing-cell {
+    .shake {
+      animation-name: react-bs-table-shake;
+    }
+    .bounceIn {
+      animation-name: react-bs-table-bounceIn;
+    }
+    .bounceOut {
+      animation-name: react-bs-table-bounceOut;
+    }
+
+    .animated {
+      animation-fill-mode: both;
+
+      &.bounceIn,
+      &.bounceOut {
+        animation-duration: .75s;
+      }
+      &.shake {
+        animation-duration: .3s;
+      }
+    }
+  }
+
+  .reset-expansion-style {
+    padding: 0;
+  }
+
+  .row-expansion-style {
+    padding: 8px;
+  }
+
+  .row-expand-slide-appear {
+    max-height: 0;
+    overflow: hidden;
+  }
+
+  .row-expand-slide-appear-active {
+    max-height: 1000px;
+    transition: max-height 3s linear;
+  }
+
+  .row-expand-slide-exit {
+    max-height: 1000px;
+  }
+
+  .row-expand-slide-exit-active {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 400ms cubic-bezier(0, 0.95, 0, 0.95);
+  }
+
+  .table.card-table {
+    border-left: 0;
+    border-right: 0;
+
+    th[data-row-selection] {
+      width: 50px;
+    }
+  }
+}
+
+@include feature-rtl(false) {
+  .react-bootstrap-table .dropdown-menu,
+  .react-bootstrap-table-pagination .dropdown-menu {
+    left: auto;
+    right: 0;
+  }
+}
+
+/******************************************************************************
+* Pagination
+*/
+
+.react-bootstrap-table-page-btns-ul {
+  float: right;
+  margin-top: 0px;
+
+  @include feature-rtl {
+    float: left;
+  }
+}
+
+.react-bootstrap-table-pagination-list-hidden {
+  display: none;
+}
+
+/******************************************************************************
+* Filters
+*/
+
+.react-bootstrap-table > table > thead > tr > th {
+  > .filter-label {
+    display: block !important;
+  }
+
+  > .filter-label,
+  > .number-filter > *,
+  > .date-filter > * {
+    margin: 8px 0 0 0;
+  }
+
+  .filter {
+    font-weight: normal;
+  }
+
+  .select-filter option[value=''],
+  .select-filter.placeholder-selected,
+  .filter::-webkit-input-placeholder,
+  .number-filter-input::-webkit-input-placeholder,
+  .date-filter-input::-webkit-input-placeholder {
+    color: lightgrey;
+    font-style: italic;
+  }
+
+  .select-filter.placeholder-selected option:not([value='']) {
+    color: initial;
+    font-style: initial;
+  }
+
+  .number-filter,
+  .date-filter {
+    display: flex;
+  }
+
+  .number-filter-input,
+  .date-filter-input {
+    margin-left: 5px;
+    float: left;
+    width: calc(100% - 67px - 5px);
+
+    @include feature-rtl {
+      margin-left: 0;
+      margin-right: 5px;
+      float: right;
+    }
+  }
+
+  .number-filter-comparator,
+  .date-filter-comparator {
+    width: 67px;
+    float: left;
+
+    @include feature-rtl {
+      float: right;
+    }
+  }
+}
+
+/******************************************************************************
+* Toolkit
+*/
+
+.search-label {
+  display: block !important;
+}
+
+/******************************************************************************
+* Animations
+*/
+
+@keyframes react-bs-table-shake {
+  from,
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+
+  10%,
+  50%,
+  90% {
+    transform: translate3d(-10px, 0, 0);
+  }
+
+  30%,
+  70% {
+    transform: translate3d(10px, 0, 0);
+  }
+}
+
+@keyframes react-bs-table-bounceIn {
+  from,
+  20%,
+  40%,
+  60%,
+  80%,
+  to {
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+
+  0% {
+    opacity: 0;
+    transform: scale3d(0.3, 0.3, 0.3);
+  }
+
+  20% {
+    transform: scale3d(1.1, 1.1, 1.1);
+  }
+
+  40% {
+    transform: scale3d(0.9, 0.9, 0.9);
+  }
+
+  60% {
+    opacity: 1;
+    transform: scale3d(1.03, 1.03, 1.03);
+  }
+
+  80% {
+    transform: scale3d(0.97, 0.97, 0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+
+@keyframes react-bs-table-bounceOut {
+  20% {
+    transform: scale3d(0.9, 0.9, 0.9);
+  }
+
+  50%,
+  55% {
+    opacity: 1;
+    transform: scale3d(1.1, 1.1, 1.1);
+  }
+
+  to {
+    opacity: 0;
+    transform: scale3d(0.3, 0.3, 0.3);
+  }
+}
+
+@if $enable-light-style {
+  .light-style {
+    @import "../../styles/_appwork/include";
+
+    .react-bs-table-card ~ .react-bootstrap-table-pagination {
+      padding: $spacer $card-spacer-x 0 $card-spacer-x;
+    }
+  }
+}
+
+@if $enable-material-style {
+  .material-style {
+    @import "../../styles/_appwork/include-material";
+
+    .react-bs-table-card ~ .react-bootstrap-table-pagination {
+      padding: $spacer $card-spacer-x 0 $card-spacer-x;
+    }
+  }
+}
+
+@if $enable-dark-style {
+  .dark-style {
+    @import "../../styles/_appwork/include-dark";
+
+    .react-bs-table-card~.react-bootstrap-table-pagination {
+      padding: $spacer $card-spacer-x 0 $card-spacer-x;
+    }
+  }
+}

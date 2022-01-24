@@ -1,0 +1,75 @@
+// -------------------------------------------------------------------------------
+// Imports
+
+@import '../../libs/rc-input-number/mixins';
+@import '../../libs/nouislider-react/mixins';
+@import '../../libs/react-select/mixins';
+@import '../../libs/react-datepicker/mixins';
+@import '../../libs/react-flatpickr/mixins';
+@import '../../libs/react-big-calendar/mixins';
+@import '../../libs/sweetalert2/mixins';
+@import '../../libs/react-toastify/mixins';
+@import '../../libs/react-quill/mixins';
+@import '../../libs/react-id-swiper/mixins';
+@import '../../libs/react-stepzilla/mixins';
+@import '../../libs/react-contextmenu/mixins';
+@import '../../libs/react-bootstrap-typeahead/mixins';
+@import '../../libs/plyr/mixins';
+@import '../../libs/spinkit/mixins';
+
+// -------------------------------------------------------------------------------
+// Theme mixin
+
+@mixin appwork-libs-theme($background, $color: null) {
+  @include rc-input-number-theme($background);
+  @include nouislider-theme($background);
+  @include react-select-theme($background);
+  @include react-datepicker-theme($background);
+  @include flatpickr-theme($background, $color);
+  @include react-big-calendar-theme($background);
+  @include sweetalert2-theme($background, $color);
+  @include react-toastify-theme($background, $color);
+  @include quill-theme($background);
+  @include swiper-theme($background);
+  @include react-stepzilla-theme($background);
+  @include react-contextmenu-theme($background, $color);
+  @include react-bootstrap-typeahead-theme($background, $color);
+  @include plyr-theme($background, $color);
+  @include spinkit-theme($background);
+}
+
+@mixin appwork-libs-material-theme($background, $color: null) {
+  @include material-rc-input-number-theme($background);
+  @include material-nouislider-theme($background);
+  @include material-react-select-theme($background);
+  @include react-datepicker-theme($background);
+  @include flatpickr-theme($background, $color);
+  @include react-big-calendar-theme($background);
+  @include sweetalert2-theme($background, $color);
+  @include react-toastify-theme($background, $color);
+  @include quill-theme($background);
+  @include swiper-theme($background);
+  @include react-stepzilla-theme($background);
+  @include react-contextmenu-theme($background, $color);
+  @include react-bootstrap-typeahead-material-theme($background, $color);
+  @include plyr-theme($background, $color);
+  @include spinkit-theme($background);
+}
+
+@mixin appwork-libs-dark-theme($background, $color: null) {
+  @include rc-input-number-theme($background);
+  @include nouislider-theme($background);
+  @include react-select-theme($background);
+  @include react-datepicker-dark-theme($background);
+  @include flatpickr-dark-theme($background, $color);
+  @include react-big-calendar-dark-theme($background);
+  @include sweetalert2-dark-theme($background, $color);
+  @include react-toastify-theme($background, $color);
+  @include quill-theme($background);
+  @include swiper-theme($background);
+  @include react-stepzilla-theme($background);
+  @include react-contextmenu-theme($background, $color);
+  @include react-bootstrap-typeahead-theme($background, $color);
+  @include plyr-theme($background, $color);
+  @include spinkit-theme($background);
+}

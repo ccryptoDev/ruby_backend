@@ -1,0 +1,12 @@
+@mixin rc-input-number-theme($border-color) {
+  .rc-input-number-focused {
+    border-color: $border-color;
+  }
+}
+
+@mixin material-rc-input-number-theme($border-color) {
+  .rc-input-number-focused {
+    border-bottom-color: $border-color;
+    box-shadow: 0 -1px 0 0 $border-color inset;
+  }
+}

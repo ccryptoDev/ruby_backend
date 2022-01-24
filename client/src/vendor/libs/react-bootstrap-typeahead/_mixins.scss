@@ -1,0 +1,46 @@
+@mixin react-bootstrap-typeahead-theme($border, $color: null) {
+  $color: if($color, $color, yiq($border));
+
+  .rbt-input-multi.focus {
+    border-color: $border !important;
+    outline: 0;
+  }
+
+  .rbt-loader {
+    border-top-color: $border !important;
+  }
+
+  .rbt-token {
+    background-color: rgba-to-hex(rgba($border, .15));
+    color: $border;
+  }
+
+  .rbt-token-active {
+    background-color: $border;
+    color: $color;
+  }
+}
+
+@mixin react-bootstrap-typeahead-material-theme($border, $color: null) {
+  $color: if($color, $color, yiq($border));
+
+  .rbt-input-multi.focus {
+    border-color: $border !important;
+    outline: 0;
+    box-shadow: 0 -1px 0 0 $border inset !important;
+  }
+
+  .rbt-loader {
+    border-top-color: $border !important;
+  }
+
+  .rbt-token {
+    background-color: rgba-to-hex(rgba($border, .15));
+    color: $border;
+  }
+
+  .rbt-token-active {
+    background-color: $border;
+    color: $color;
+  }
+}

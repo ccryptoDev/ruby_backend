@@ -1,0 +1,42 @@
+$rtl-support: true;
+
+@import "../_appwork/include-dark";
+@import "../_theme/common";
+@import "../_theme/libs";
+@import "../_theme/uikit";
+
+$primary-color: #fc5a5c;
+
+@include appwork-common-dark-theme($primary-color);
+@include appwork-libs-dark-theme($primary-color);
+@include appwork-uikit-dark-theme($primary-color);
+
+// Navbar
+
+@include appwork-navbar-variant('.bg-navbar-theme', #fff);
+
+// Sidenav
+
+@include appwork-sidenav-variant('.bg-sidenav-theme', #1C1F24, $color: $text-muted, $active-color: $body-color);
+
+.bg-sidenav-theme {
+  .sidenav-inner > .sidenav-item > .sidenav-link .sidenav-icon,
+  .sidenav-inner > .sidenav-item > .sidenav-link:hover .sidenav-icon,
+  .sidenav-inner > .sidenav-item > .sidenav-link:focus .sidenav-icon {
+    color: $gray-300;
+  }
+  .sidenav-inner > .sidenav-item.active > .sidenav-link .sidenav-icon {
+    color: $primary-color !important;
+  }
+  .sidenav-item.active > .sidenav-link:not(.sidenav-toggle) {
+    background: $primary-color;
+  }
+}
+
+// Footer
+
+@include appwork-footer-variant('.bg-footer-theme', $body-bg, $color: $text-muted, $active-color: $body-color);
+
+.layout-footer {
+  box-shadow: 0 -1px 0 $border-color;
+}

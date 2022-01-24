@@ -1,0 +1,22 @@
+.Container {
+  width: 100%;
+  min-height: 100vh;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Status {
+  font-size: 10rem;
+  font-weight: 400;
+  margin: 0;
+  line-height: 1;
+}
+
+.Message {
+  font-weight: 300;
+  font-size: 3.25rem;
+  margin: 0;
+  line-height: 1;
+}

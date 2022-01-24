@@ -1,0 +1,16 @@
+.powered-by {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  span {
+    font-size: 16px;
+    line-height: 20px;
+    color: rgba(30, 42, 70, 0.38);
+  }
+  img {
+    margin-top: 10px;
+    width: 130px;
+    height: 33px;
+  }
+}

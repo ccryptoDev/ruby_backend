@@ -1,0 +1,8 @@
+@mixin react-contextmenu-theme ($background, $color: null) {
+  $color: if($color, $color, yiq($background));
+
+  :not(.react-contextmenu-submenu) > .react-contextmenu-item:not(.react-contextmenu-submenu):active {
+    background: $background !important;
+    color: $color !important;
+  }
+}

@@ -1,0 +1,151 @@
+$orange: #ff6c4b;
+$black: #1e2a46;
+
+.publicPage {
+  font-family: 'Circular Std';
+  font-weight: normal;
+  background-color: #ffffff;
+  padding: 45px;
+  border-radius: 4px;
+
+  .logoWrapper {
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  .header {
+    text-align: center;
+  }
+  .title {
+    color: $black;
+    font-size: 1.6875rem;
+  }
+  .subtitle {
+    margin: 12px 0 24px;
+    color: $black;
+    opacity: 80%;
+    font-size: 1.0625rem;
+    font-weight: normal;
+  }
+  .label {
+    color: $black;
+    opacity: 53%;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .normal-label {
+    color: $black;
+    opacity: 53%;
+    margin-bottom: 12px;
+  }
+  .cta {
+    margin-top: 8px;
+    background-color: $orange;
+    width: 100%;
+    font-size: 1.125rem;
+    padding: 14px 0;
+  }
+  .cta-outline {
+    margin-top: 8px;
+    margin-bottom: 18px;
+    color: $orange !important;
+    border-color: $orange;
+    border-width: 2px;
+    background-color: white;
+    width: 100%;
+    font-size: 1.125rem;
+    padding: 14px 0;
+  }
+  .linkCopy {
+    color: $orange;
+    margin-top: 13px;
+  }
+}
+
+.comment-page {
+  font-family: 'Circular Std Book';  
+  background-color: $black;
+  padding: 52px 32px;
+  border-radius: 4px;
+  color: white;
+
+  .header {
+    text-align: center;
+    font-size: 1.375rem;
+    font-weight: bold;
+    p {
+      width: 80%;
+    }
+  }
+  .title {
+    font-size: 1.125rem;
+  }
+  .content {
+    margin: 8px 22px 18px 0px;
+    font-size: 0.875rem;
+  }
+  .footer {
+    margin-top: 30px;
+    text-align: center;
+    font-size: 1.125rem;
+    font-style: italic;
+    p {      
+      width: 75%;
+    }
+  }
+}
+
+.btn-primary {
+  color: white !important;
+}
+
+.circle {
+  width: 50px;
+  height: 50px;
+  background-color: white;
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+.font-14 {
+  font-size: 0.875rem !important;
+}
+
+.font-16 {
+  font-size: 1rem !important;
+}
+
+.form-input-font {
+  font-size: 1.125rem !important;
+}
+
+.font-22 {
+  font-size: 1.375rem !important;
+}
+
+.login-back {
+  height: 150vh;
+  background: url(../images/LoginOnlyPic.png);
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.login-logo {
+  & > svg {
+    position: fixed;
+  }
+}
+
+.register-back {
+  height: 150vh;
+  background: url(../images/SignUpOnlyPic.png);
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.register-logo {
+  & > svg {
+    position: fixed;
+  }
+}

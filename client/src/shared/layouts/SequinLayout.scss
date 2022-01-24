@@ -1,0 +1,23 @@
+$orange: #ff6c4b;
+$darkBlue: #1e2a46;
+
+.sequinSideNav {
+  background-color: $darkBlue;
+  font-size: 16px;
+  a {
+    color: #fff;
+    &.active {
+      color: $orange;
+    }
+    &:hover {
+      color: $orange;
+      opacity: 0.5;
+    }
+  }
+  .logoWrapper {
+    text-align: center;
+  }
+  .iconText {
+    margin-left: 23px;
+  }
+}

@@ -1,0 +1,197 @@
+@import '../../styles/_custom-variables/libs';
+
+$plyr-range-track-height: 4px !default;
+$plyr-range-thumb-height: 14px !default;
+$plyr-progress-loading-size: 15px !default;
+$plyr-audio-controls-bg: transparent !default;
+$plyr-audio-progress-buffered-bg: rgba(0, 0, 0, .1) !default;
+$plyr-control-spacing: 10px !default;
+$plyr-font-weight-regular: 400 !default;
+
+// Variables
+@import '~plyr/src/sass/settings/breakpoints';
+@import '~plyr/src/sass/settings/colors';
+@import '~plyr/src/sass/settings/cosmetics';
+@import '~plyr/src/sass/settings/type';
+@import '~plyr/src/sass/settings/badges';
+@import '~plyr/src/sass/settings/captions';
+@import '~plyr/src/sass/settings/controls';
+@import '~plyr/src/sass/settings/helpers';
+@import '~plyr/src/sass/settings/menus';
+@import '~plyr/src/sass/settings/progress';
+@import '~plyr/src/sass/settings/sliders';
+@import '~plyr/src/sass/settings/tooltips';
+@import '~plyr/src/sass/lib/animation';
+@import '~plyr/src/sass/lib/functions';
+@import '~plyr/src/sass/lib/mixins';
+
+// Components
+@import '~plyr/src/sass/base';
+@import '~plyr/src/sass/components/badges';
+@import '~plyr/src/sass/components/captions';
+@import '~plyr/src/sass/components/control';
+@import '~plyr/src/sass/components/controls';
+@import '~plyr/src/sass/components/menus';
+@import '~plyr/src/sass/components/sliders';
+@import '~plyr/src/sass/components/poster';
+@import '~plyr/src/sass/components/times';
+@import '~plyr/src/sass/components/tooltips';
+@import '~plyr/src/sass/components/progress';
+@import '~plyr/src/sass/components/volume';
+@import '~plyr/src/sass/types/audio';
+@import '~plyr/src/sass/types/video';
+@import '~plyr/src/sass/states/fullscreen';
+@import '~plyr/src/sass/plugins/ads';
+@import '~plyr/src/sass/plugins/preview-thumbnails';
+@import '~plyr/src/sass/utils/animation';
+@import '~plyr/src/sass/utils/hidden';
+
+.plyr--audio .plyr__controls {
+  padding: 0;
+}
+
+.plyr__progress__container,
+.plyr__volume input[type=range] {
+  flex: 0 1 auto;
+}
+
+.plyr__menu__container {
+  @include feature-rtl {
+    direction: rtl;
+    text-align: right;
+
+    .plyr__control--forward {
+      padding-left: ceil($plyr-control-padding * 4);
+      padding-right: ceil($plyr-control-padding * 1.5);
+
+      &::after {
+        border-left-color: transparent;
+        border-right-color: rgba($plyr-menu-color, 0.8);
+        right: auto;
+        left: 5px;
+      }
+
+      &.plyr__tab-focus::after,
+      &:hover::after {
+        border-right-color: currentColor;
+      }
+    }
+
+    .plyr__control--back {
+      padding-left: ceil($plyr-control-padding * 1.5);
+      padding-right: ceil($plyr-control-padding * 4);
+
+      &::after {
+        border-right-color: transparent;
+        border-left-color: rgba($plyr-menu-color, 0.8);
+        left: auto;
+        right: $plyr-control-padding;
+      }
+
+      &.plyr__tab-focus::after,
+      &:hover::after {
+        border-left-color: currentColor;
+      }
+    }
+
+    .plyr__control[role='menuitemradio'] {
+      padding-left: ceil($plyr-control-padding * 1.5);
+      padding-right: $plyr-control-padding;
+
+      &::before {
+        margin-right: 0;
+        margin-left: $plyr-control-spacing;
+      }
+
+      &::after {
+        left: auto;
+        right: 12px;
+      }
+    }
+
+    .plyr__menu__value {
+      margin-right: auto;
+      margin-left: -($plyr-control-padding - 2);
+      padding-left: 0;
+      padding-right: ceil($plyr-control-padding * 3.5);
+    }
+  }
+}
+
+@if $enable-light-style {
+  .light-style {
+    @import "../../styles/_appwork/include";
+
+    .plyr {
+      font-family: $font-family-sans-serif;
+      color: $body-color;
+    }
+
+    .plyr--audio .plyr__controls {
+      color: $body-color;
+    }
+
+    .plyr__tooltip {
+      font-size: $font-size-sm;
+      line-height: $line-height-sm;
+    }
+  }
+}
+
+@if $enable-material-style {
+  .material-style {
+    @import "../../styles/_appwork/include-material";
+
+    .plyr {
+      font-family: $font-family-sans-serif;
+      color: $body-color;
+    }
+
+    .plyr--audio .plyr__controls {
+      color: $body-color;
+    }
+
+    .plyr__tooltip {
+      font-size: $font-size-sm;
+      line-height: $line-height-sm;
+    }
+  }
+}
+
+@if $enable-dark-style {
+  .dark-style {
+    @import "../../styles/_appwork/include-dark";
+
+    .plyr {
+      font-family: $font-family-sans-serif;
+      color: $body-color;
+    }
+
+    .plyr--audio .plyr__controls {
+      color: $body-color;
+    }
+
+    .plyr__tooltip {
+      font-size: $font-size-sm;
+      line-height: $line-height-sm;
+    }
+
+    .plyr--audio .plyr__progress__buffer {
+      color: $gray-200;
+    }
+
+    .plyr--full-ui.plyr--audio input[type='range'] {
+      &::-webkit-slider-runnable-track {
+        background-color: $gray-100;
+      }
+
+      &::-moz-range-track {
+        background-color: $gray-100;
+      }
+
+      &::-ms-track {
+        background-color: $gray-100;
+      }
+    }
+  }
+}

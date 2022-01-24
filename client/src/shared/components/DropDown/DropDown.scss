@@ -1,0 +1,68 @@
+// dropdwon style
+.dropdown-layout {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .dropdown-input {
+    cursor: pointer;
+    border-radius: 3px;
+    font-size: 13px;
+    padding: 0.438rem 0.875rem;
+    width: 100%;
+    height: 100%;
+    color: rgba(30, 42, 70, 0.38);
+  
+    &:hover, :focus {
+      outline: none;
+    }
+    &::placeholder {
+      font-size: 16px;
+      line-height: 20px;
+      color: rgba(30, 42, 70, 0.38);
+    }
+  }
+
+  .cat-dropdown {
+    position: absolute;
+    right: 15px;
+    width: 9px;
+    height: 5px;
+    cursor: pointer;
+  }
+  .dropdown-tmpl {
+    position: absolute;
+    width: 100%;
+    // height: 138px;
+    overflow-y: scroll;
+    top: 110%;
+    z-index: 2;
+    background: #FFFFFF;
+    border: 1.5px solid #D2D4DA;
+    box-sizing: border-box;
+    border-radius: 5px;
+
+    &::-webkit-scrollbar {
+      display: none;
+      }
+    & {
+      -ms-overflow-style: none;  /* IE and Edge */
+      scrollbar-width: none;  /* Firefox */
+    }
+    .dropdown-list {
+      cursor: pointer;
+      text-align: left;
+      padding: 9px;
+      font-size: 16px;
+      line-height: 20px;
+      color: rgba(30, 42, 70, 0.5);
+      
+      &:hover {
+        color: white;
+        background: rgba(210, 212, 218, 0.3);
+      }
+    }
+  }
+}
+

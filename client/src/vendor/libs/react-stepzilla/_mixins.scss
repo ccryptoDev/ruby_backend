@@ -1,0 +1,7 @@
+@mixin react-stepzilla-theme($color) {
+  ol.progtrckr .progtrckr-doing .stepzilla-icon,
+  ol.progtrckr .progtrckr-doing .stepzilla-number {
+    color: $color !important;
+    border-color: $color !important;
+  }
+}

@@ -1,0 +1,17 @@
+@mixin appwork-uikit-theme($background) {
+  .ui-product-color.active {
+    box-shadow: 0 0 0 2px #fff, 0 0 0 4px $background !important;
+  }
+}
+
+@mixin appwork-uikit-material-theme($background) {
+  .ui-product-color.active {
+    box-shadow: 0 0 0 2px #fff, 0 0 0 4px $background !important;
+  }
+}
+
+@mixin appwork-uikit-dark-theme($background) {
+  .ui-product-color.active {
+    box-shadow: 0 0 0 2px $body-bg, 0 0 0 4px $background !important;
+  }
+}

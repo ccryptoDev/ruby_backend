@@ -1,0 +1,73 @@
+@import "../_custom-variables/pages";
+@import '../../../shared/assets/styles/common.scss';
+
+$authentication-1-inner-max-width: 300px !default;
+$authentication-2-inner-max-width: 530px !default;
+$authentication-4-inner-max-width: 800px !default;
+
+$authentication-1-inner-right-max-width: 280px !default;
+$authentication-2-inner-right-max-width: 490px !default;
+$authentication-4-inner-right-max-width: 740px !default;
+
+.authentication-wrapper {
+  display: flex;
+  flex-basis: 100%;
+  min-height: 90vh;
+  width: 100%;
+
+  .authentication-inner {
+    width: 100%;
+  }
+
+  &.authentication-1,
+  &.authentication-2,
+  &.authentication-4 {
+    align-items: center;
+    justify-content: center;
+  }
+
+  &.authentication-1 .authentication-inner {
+    max-width: $authentication-1-inner-max-width;
+  }
+  &.authentication-1 .authentication-inner-right {
+    max-width: $authentication-1-inner-right-max-width;
+  }
+
+  &.authentication-2 .authentication-inner {
+    max-width: $authentication-2-inner-max-width;
+  }
+  &.authentication-2 .authentication-inner-right {
+    max-width: $authentication-2-inner-right-max-width;
+  }
+
+  &.authentication-3 {
+    align-items: stretch;
+    justify-content: stretch;
+
+    .authentication-inner {
+      display: flex;
+      align-items: stretch;
+      flex-wrap: nowrap;
+      justify-content: stretch;
+    }
+  }
+
+  &.authentication-4 .authentication-inner {
+    max-width: $authentication-4-inner-max-width;
+  }
+  &.authentication-4 .authentication-inner-right {
+    max-width: $authentication-4-inner-right-max-width;
+  }
+
+  // IE 10-11 fix
+  @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    &::after {
+      content: "";
+      display: block;
+      flex: 0 0 0%;
+      min-height: inherit;
+      width: 0;
+      font-size: 0;
+    }
+  }
+}

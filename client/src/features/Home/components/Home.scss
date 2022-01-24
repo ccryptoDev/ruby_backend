@@ -1,0 +1,260 @@
+$orange: #ff6c4b;
+$darkBlue: #1e2a46;
+$sequinPink: #fdece6;
+$purple: #60034C;
+$grey: #8F94A3;
+$blackish: #1E2A46;
+
+.sectionWrapper {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.purple {
+  color: $purple
+}
+
+.grey {
+  color: $grey
+}
+
+.orange {
+  color: $orange
+}
+
+.dropdown {
+  a {
+    color: $purple
+  }
+}
+
+.sectionTitle {
+  font-size:24px
+}
+
+.cardInfoModal {
+  // align-items: center;
+
+  .modal-content {
+    align-items: center;
+    border-radius: 16px;
+  }
+
+  .modal-header {
+    border: none
+  }
+
+  .modal-footer {
+    border: none
+  }
+
+  .modal-body {
+    text-align: center;
+    padding: 5px 50px;
+  }
+
+  .title {
+    color: $orange;
+    font-weight: 700;
+    margin-bottom: 13px;
+    margin-top: 15px;
+    font-size: 24px;
+  }
+
+  button {
+    padding: 10px 60px;
+    font-size: 17px;
+  }
+}
+
+.section {
+  padding: 20px;
+  border-radius: 20px;
+  color: $darkBlue;
+  min-height: 250px;
+
+  .title {
+    font-size: 16px;
+    margin-bottom: 16px;
+  }
+  .emphasis {
+    color: $orange;
+    font-size: 24px;
+    font-weight: 900;
+    margin-bottom: 16px;
+  }
+  .tileHeader {
+    color: $orange;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+}
+
+
+.cardInformation {
+  .section {
+    border: 3px solid $purple;
+  }
+
+  .cardName {
+    font-size: 22px;
+    color: $grey;
+  }
+
+  .payoff {
+    font-size:60px
+  }
+
+  .header {
+    font-size: 15px;
+    color: $grey;
+  }
+
+  .value {
+    font-size: 17px;
+    color: $blackish;
+    font-weight: bold;
+  }
+
+  .cta {
+    background-color: $purple;
+    font-size: 28px;
+    font-weight: bold;
+    // &.completed {
+    //   background-color: #bcbdc0;
+    // }
+  }
+}
+
+.payoffs {
+  .header {
+    color: $grey;
+    font-size: 11px;
+  }
+
+  .payoff-text {
+    color: $blackish;
+    font-size: 14px;
+    font-weight: bold;
+  }
+}
+
+.credit-chart {
+  .empty-text {
+    color: $blackish;
+    font-size: 14px;
+    font-weight: bold;
+  }
+}
+
+.weeklyTask {
+  min-height: 365px;
+  .status {
+    height: 24px;
+    width: 24px;
+    margin-bottom: 16px;
+    border-radius: 50%;
+
+    &.complete {
+      background-color: $orange;
+      color: #ffffff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    &.incomplete {
+      border: 3px solid $sequinPink;
+    }
+  }
+  .description {
+    font-size: 14px;
+    min-height: 40px;
+    margin-bottom: 16px;
+  }
+  .sequins {
+    color: $orange;
+  } 
+  .orange-cta {
+    margin-top: 24px;
+    background: $orange;
+  }
+  
+  .cta {
+    margin-top: 24px;
+    background-color: $darkBlue;
+    &.completed {
+      background-color: #bcbdc0;
+    }
+  }
+
+
+  .switch-row {
+    // align-items: center;
+    margin-top: 40px;
+
+    .toggleTitle {
+      font-weight: bold;
+      // margin-right: 30px;
+      // margin-left: 14px;
+      font-size: 16px;
+    }
+  }
+}
+
+.welcomeWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $sequinPink;
+  border-radius: 20px;
+  padding: 20px 40px;
+  color: $darkBlue;
+  h4 {
+    padding: 0;
+  }
+}
+
+.iframeWrapper {
+  display: flex;
+  height: 700px;
+  iframe {
+    border: none;
+  }
+}
+
+.imgWrapper {
+  display: contents;
+}
+
+.sequinsCta {
+  background-color: $orange;
+}
+
+.styledSequins {
+  background: $sequinPink;
+  border-radius: 50%;
+  padding: 20px;
+  margin-bottom: 30px;
+  width: 90px;
+}
+
+.reminderToggle {
+  float: right;
+}
+
+.toggleTitle {
+  padding-right: 15px;
+}
+
+.yourSequins {
+  .progressBar {
+    margin: 20px 0 12px;
+  }
+  .nextMilestone {
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+}

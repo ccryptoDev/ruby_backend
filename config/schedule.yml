@@ -1,0 +1,20 @@
+# config/schedule.yml
+plaid_worker:
+  cron: 0 0,8,16 * * * #it will retrieve data every 8 hours
+  class: "PlaidWorker"
+
+friday_payoff:
+  cron: "0 17 * * FRI" # every friday
+  class: "FridayPayoffWorker"
+
+utilization:
+  cron: "0 21 * * */1" # every day of the week
+  class: "UtilizationWorker"
+
+monthly_payoff:
+  cron: "0 20 * * */1"
+  class: "MonthlyPayoffWorker"
+
+daily_message:
+  cron: "0 19 * * *"
+  class: "DailyMessageWorker"

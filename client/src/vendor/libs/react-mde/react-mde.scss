@@ -1,0 +1,444 @@
+@import '../../styles/_custom-variables/libs';
+
+$mde-toolbar-padding: .625rem !default;
+$mde-editor-padding: .625rem !default;
+$mde-preview-padding: .625rem !default;
+$mde-grip-size: .625rem !default;
+
+@-webkit-keyframes react-mde-tooltip-animation {
+  to { opacity: 1; }
+}
+
+@-moz-keyframes react-mde-tooltip-animation {
+  to { opacity: 1; }
+}
+
+@keyframes react-mde-tooltip-animation {
+  to { opacity: 1; }
+}
+
+.mde-header {
+  display: flex;
+  align-items: stretch;
+  flex-shrink: 0;
+  flex-wrap: wrap;
+  border-bottom: 1px solid;
+
+  button {
+    color: inherit;
+  }
+
+  .mde-tabs button:hover:not(.selected),
+  .mde-header-group > .mde-header-item > button:hover > .svg-icon {
+    opacity: .75;
+  }
+
+  .mde-tabs {
+    display: flex;
+    flex-direction: row;
+
+    button {
+      margin: .375rem .1875rem;
+      border: 1px solid transparent;
+      background-color: transparent;
+      cursor: pointer;
+
+      &:first-child {
+        margin-left: .375rem;
+
+        @include feature-rtl {
+          margin-right: .375rem;
+          margin-left: .1875rem;
+        }
+      }
+
+      &.selected {
+        cursor: default;
+      }
+    }
+  }
+
+  .svg-icon {
+    display: inline-block;
+    overflow: visible;
+    width: 1em;
+    height: 1em;
+    vertical-align: -.125em;
+    font-size: inherit;
+  }
+
+  ul.mde-header-group {
+    display: flex;
+    flex-wrap: nowrap;
+    margin: 0;
+    padding: $mde-toolbar-padding;
+    list-style: none;
+  }
+
+  ul.mde-header-group.hidden {
+    visibility: hidden;
+  }
+
+  ul.mde-header-group li.mde-header-item {
+    position: relative;
+    display: inline-block;
+    margin: 0 .25rem;
+
+    button {
+      margin: 0;
+      padding: .25rem;
+      height: 1.375rem;
+      border: none;
+      background: none;
+      text-align: left;
+      cursor: pointer;
+
+      @include feature-rtl {
+        text-align: right;
+      }
+    }
+
+    ul.react-mde-dropdown {
+      position: absolute;
+      top: 1.875rem;
+      left: 0;
+      z-index: 2;
+      padding: .3125rem;
+      border: 1px solid;
+      background-color: #fff;
+      transform: translateX(-.5625rem);
+
+      @include feature-rtl {
+        right: 0;
+        left: auto;
+        transform: translateX(.5625rem);
+      }
+
+      li {
+        display: block;
+        margin: 0;
+        list-style: none;
+        white-space: nowrap;
+      }
+
+      li button {
+        display: block;
+        height: auto;
+      }
+
+      li button p {
+        display: block;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        background: none;
+        text-align: left;
+        font-weight: bold;
+        line-height: 1em;
+
+        @include feature-rtl {
+          text-align: right;
+        }
+
+        &.header-1 {
+          font-size: 1.25rem;
+        }
+        &.header-2 {
+          font-size: 1.125rem;
+        }
+        &.header-3 {
+          font-size: .875rem;
+        }
+        &.header-4 {
+          font-size: .75rem;
+        }
+      }
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: -1rem;
+        left: .1875rem;
+        width: 0;
+        height: 0;
+        border: 8px solid transparent;
+        transform: translateX(50%);
+
+        @include feature-rtl {
+          right: .1875rem;
+          left: auto;
+          transform: translateX(-50%);
+        }
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: -.875rem;
+        left: .3125rem;
+        width: 0;
+        height: 0;
+        border: 7px solid transparent;
+        transform: translateX(50%);
+
+        @include feature-rtl {
+          right: .3125rem;
+          left: auto;
+          transform: translateX(-50%);
+        }
+      }
+    }
+  }
+}
+
+textarea.mde-text {
+  overflow-y: auto;
+  padding: $mde-editor-padding;
+  width: 100%;
+  border: 0;
+  vertical-align: top;
+  resize: none;
+  background: none;
+}
+
+.mde-preview .mde-preview-content {
+  padding: $mde-preview-padding;
+}
+
+.react-mde {
+  border: 1px solid;
+
+  .invisible {
+    display: none;
+  }
+
+  .grip {
+    position: relative;
+    height: $mde-grip-size;
+    border-top: 1px solid;
+    color: inherit;
+    text-align: center;
+    cursor: s-resize;
+  }
+
+  .grip .icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: $mde-grip-size;
+    width: $mde-grip-size;
+    transform: translate(-50%, -50%);
+  }
+
+  button,
+  textarea.mde-text {
+    outline: 0 !important;
+  }
+}
+
+.react-mde.with-tooltips .mde-header .mde-header-group > .mde-header-item > button:hover {
+  &::before {
+    content: "";
+    position: absolute;
+    top: -.3125rem;
+    right: 50%;
+    bottom: auto;
+    margin-right: -.3125rem;
+    width: 0;
+    height: 0;
+    border: 5px solid transparent;
+    opacity: 0;
+    animation: react-mde-tooltip-animation .2s ease-in .5s 1 normal forwards;
+    pointer-events: none;
+  }
+
+  &::after {
+    content: attr(aria-label);
+    position: absolute;
+    right: 50%;
+    bottom: 100%;
+    margin-bottom: .3125rem;
+    white-space: nowrap;
+    opacity: 0;
+    transform: translateX(50%);
+    animation: react-mde-tooltip-animation .2s ease-in .5s 1 normal forwards;
+    pointer-events: none;
+  }
+}
+
+@if $enable-light-style {
+  .light-style {
+    @import "../../styles/_appwork/include";
+
+    .react-mde {
+      background: $input-bg;
+    }
+
+    .mde-header,
+    .mde-header .mde-tabs button.selected,
+    .react-mde,
+    .react-mde .grip,
+    .mde-header ul.mde-header-group li.mde-header-item ul.react-mde-dropdown {
+      border-color: $input-border-color;
+    }
+
+    .mde-header ul.mde-header-group li.mde-header-item ul.react-mde-dropdown::before {
+      border-bottom-color: $input-border-color;
+    }
+
+    .mde-header ul.mde-header-group li.mde-header-item ul.react-mde-dropdown::after {
+      border-bottom-color: $dropdown-bg;
+    }
+
+    .mde-header ul.mde-header-group li.mde-header-item ul.react-mde-dropdown {
+      border-radius: $dropdown-border-radius;
+      box-shadow: $dropdown-box-shadow;
+      background: $dropdown-bg;
+    }
+
+    textarea.mde-text {
+      color: $input-color;
+    }
+
+    .mde-header ul.mde-header-group li.mde-header-item ul.react-mde-dropdown li button p:hover {
+      color: $link-hover-color;
+    }
+
+    .react-mde.with-tooltips .mde-header .mde-header-group>.mde-header-item>button:hover {
+      &::before {
+        z-index: $zindex-tooltip + 1;
+        border-top-color: $tooltip-bg;
+        color: $tooltip-bg;
+      }
+
+      &::after {
+        z-index: $zindex-tooltip;
+        padding: $tooltip-padding-y $tooltip-padding-x;
+        border-radius: $tooltip-border-radius;
+        background: $tooltip-bg;
+        box-shadow: $tooltip-box-shadow;
+        box-shadow: $tooltip-box-shadow;
+        color: $tooltip-color;
+        font-size: $tooltip-font-size;
+      }
+    }
+  }
+}
+
+@if $enable-material-style {
+  .material-style {
+    @import "../../styles/_appwork/include-material";
+
+    .react-mde {
+      background: $input-bg;
+    }
+
+    .mde-header,
+    .mde-header .mde-tabs button.selected,
+    .react-mde,
+    .react-mde .grip,
+    .mde-header ul.mde-header-group li.mde-header-item ul.react-mde-dropdown {
+      border-color: $input-border-color;
+    }
+
+    .mde-header ul.mde-header-group li.mde-header-item ul.react-mde-dropdown::before {
+      border-bottom-color: $input-border-color;
+    }
+
+    .mde-header ul.mde-header-group li.mde-header-item ul.react-mde-dropdown::after {
+      border-bottom-color: $dropdown-bg;
+    }
+
+    .mde-header ul.mde-header-group li.mde-header-item ul.react-mde-dropdown {
+      border-radius: $dropdown-border-radius;
+      box-shadow: $dropdown-box-shadow;
+      background: $dropdown-bg;
+    }
+
+    textarea.mde-text {
+      color: $input-color;
+    }
+
+    .mde-header ul.mde-header-group li.mde-header-item ul.react-mde-dropdown li button p:hover {
+      color: $link-hover-color;
+    }
+
+    .react-mde.with-tooltips .mde-header .mde-header-group>.mde-header-item>button:hover {
+      &::before {
+        z-index: $zindex-tooltip + 1;
+        border-top-color: $tooltip-bg;
+        color: $tooltip-bg;
+      }
+
+      &::after {
+        z-index: $zindex-tooltip;
+        padding: $tooltip-padding-y $tooltip-padding-x;
+        border-radius: $tooltip-border-radius;
+        background: $tooltip-bg;
+        box-shadow: $tooltip-box-shadow;
+        box-shadow: $tooltip-box-shadow;
+        color: $tooltip-color;
+        font-size: $tooltip-font-size;
+      }
+    }
+  }
+}
+
+@if $enable-dark-style {
+  .dark-style {
+    @import "../../styles/_appwork/include-dark";
+
+    .react-mde {
+      background: $input-bg;
+    }
+
+    .mde-header,
+    .mde-header .mde-tabs button.selected,
+    .react-mde,
+    .react-mde .grip,
+    .mde-header ul.mde-header-group li.mde-header-item ul.react-mde-dropdown {
+      border-color: $input-border-color;
+    }
+
+    .mde-header ul.mde-header-group li.mde-header-item ul.react-mde-dropdown::before {
+      border-bottom-color: $input-border-color;
+    }
+
+    .mde-header ul.mde-header-group li.mde-header-item ul.react-mde-dropdown::after {
+      border-bottom-color: $dropdown-bg;
+    }
+
+    .mde-header ul.mde-header-group li.mde-header-item ul.react-mde-dropdown {
+      border-radius: $dropdown-border-radius;
+      box-shadow: $dropdown-box-shadow;
+      background: $dropdown-bg;
+    }
+
+    textarea.mde-text {
+      color: $input-color;
+    }
+
+    .mde-header ul.mde-header-group li.mde-header-item ul.react-mde-dropdown li button p:hover {
+      color: $link-hover-color;
+    }
+
+    .react-mde.with-tooltips .mde-header .mde-header-group>.mde-header-item>button:hover {
+      &::before {
+        z-index: $zindex-tooltip + 1;
+        border-top-color: $tooltip-bg;
+        color: $tooltip-bg;
+      }
+
+      &::after {
+        z-index: $zindex-tooltip;
+        padding: $tooltip-padding-y $tooltip-padding-x;
+        border-radius: $tooltip-border-radius;
+        background: $tooltip-bg;
+        box-shadow: $tooltip-box-shadow;
+        box-shadow: $tooltip-box-shadow;
+        color: $tooltip-color;
+        font-size: $tooltip-font-size;
+      }
+    }
+  }
+}

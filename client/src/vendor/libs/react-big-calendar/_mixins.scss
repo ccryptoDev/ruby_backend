@@ -1,0 +1,40 @@
+
+@mixin react-big-calendar-event-variant($parent, $background, $opacity: .15) {
+  $parent: if($parent !=null, '.rbc-event-#{$parent}.rbc-event', '.rbc-event');
+
+  #{$parent} {
+    background: rgba($background, $opacity) !important;
+
+    &.rbc-selected {
+      background: rgba($background, $opacity) !important;
+    }
+  }
+
+  .rbc-day-slot #{$parent} {
+    border-color: rgba($background, .75) !important;
+  }
+}
+
+@mixin react-big-calendar-theme($background) {
+  @include react-big-calendar-event-variant(null, $background);
+
+  // .cv-day.draghover {
+  //   box-shadow: inset 0 0 0.0 .125rem $background !important;
+  // }
+
+  .rbc-today {
+    background: rgba($background, .05) !important;
+  }
+}
+
+@mixin react-big-calendar-dark-theme($background) {
+  @include react-big-calendar-event-variant(null, $background, .5);
+
+  // .cv-day.draghover {
+  //   box-shadow: inset 0 0 0.0 .125rem $background !important;
+  // }
+
+  .rbc-today {
+    background: rgba($background, .05) !important;
+  }
+}

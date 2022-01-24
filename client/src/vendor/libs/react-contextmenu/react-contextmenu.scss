@@ -1,0 +1,231 @@
+@import '../../styles/_custom-variables/libs';
+
+.react-contextmenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  display: none;
+  float: left;
+  text-align: left;
+  list-style: none;
+  background-clip: padding-box;
+  outline: none !important;
+
+  @include feature-rtl {
+    text-align: right;
+  }
+}
+
+.react-contextmenu.react-contextmenu--visible {
+  display: block;
+}
+
+.react-contextmenu-item {
+  cursor: pointer;
+  display: block;
+  width: 100%;
+  clear: both;
+  text-align: inherit;
+  white-space: nowrap;
+  background-color: transparent;
+  border: 0;
+  outline: 0;
+}
+
+.react-contextmenu-item.react-contextmenu-item--disabled {
+  pointer-events: none;
+  background-color: transparent;
+}
+
+.react-contextmenu-item--divider {
+  cursor: inherit;
+  padding: 0 !important;
+}
+
+.react-contextmenu-item.react-contextmenu-submenu>.react-contextmenu-item:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  display: block;
+  width: .375rem;
+  height: .375rem;
+  border: 1px solid;
+  border-top: 0;
+  border-left: 0;
+  margin-top: -1px;
+  transform: rotate(-45deg) translate(0, -50%);
+
+  @include feature-rtl {
+    right: auto !important;
+    transform: rotate(45deg) translate(0, -50%) scaleX(-1);
+  }
+}
+
+.react-contextmenu-item.react-contextmenu-submenu {
+  padding: 0 !important;
+}
+
+.react-contextmenu-item.react-contextmenu-submenu  > .react-contextmenu {
+  right: auto !important;
+  left: 100% !important;
+
+  @include feature-rtl {
+    right: 100% !important;
+    left: auto !important;
+  }
+}
+
+@if $enable-light-style {
+  .light-style {
+    @import "../../styles/_appwork/include";
+
+    .react-contextmenu {
+      z-index: $zindex-dropdown;
+      min-width: $dropdown-min-width;
+      padding: $dropdown-padding-y 0;
+      @include font-size($dropdown-font-size);
+      color: $dropdown-color;
+      background-color: $dropdown-bg;
+      border: $dropdown-border-width solid $dropdown-border-color;
+      @include border-radius($dropdown-border-radius);
+      box-shadow: $dropdown-box-shadow;
+      animation: dropdownAnimation .1s;
+    }
+
+    .react-contextmenu-item {
+      padding: $dropdown-item-padding-y $dropdown-item-padding-x;
+      font-weight: $font-weight-normal;
+      color: $dropdown-link-color;
+    }
+
+    .react-contextmenu-item.react-contextmenu-item--selected,
+    .react-contextmenu-item.react-contextmenu-item--active {
+      color: $dropdown-link-hover-color;
+      text-decoration: none;
+      @include gradient-bg($dropdown-link-hover-bg);
+    }
+
+    .react-contextmenu-item.react-contextmenu-item--disabled {
+      color: $dropdown-link-disabled-color;
+    }
+
+    .react-contextmenu-item--divider {
+      @include nav-divider($dropdown-divider-bg, $dropdown-divider-margin-y);
+    }
+
+    .react-contextmenu-item.react-contextmenu-submenu>.react-contextmenu-item:after {
+      right: $dropdown-item-padding-x / 2;
+    }
+    @include feature-rtl-style {
+      .react-contextmenu-item.react-contextmenu-submenu>.react-contextmenu-item:after {
+        left: $dropdown-item-padding-x / 2;
+      }
+    }
+  }
+}
+
+@if $enable-material-style {
+  .material-style {
+    @import "../../styles/_appwork/include-material";
+
+    .react-contextmenu {
+      z-index: $zindex-dropdown;
+      min-width: $dropdown-min-width;
+      padding: $dropdown-padding-y 0;
+      @include font-size($dropdown-font-size);
+      color: $dropdown-color;
+      background-color: $dropdown-bg;
+      border: $dropdown-border-width solid $dropdown-border-color;
+      @include border-radius($dropdown-border-radius);
+      box-shadow: $dropdown-box-shadow;
+      transform-origin: top left;
+      animation: dropdownAnimation .25s;
+    }
+
+    @include feature-rtl-style {
+      .react-contextmenu {
+        transform-origin: top right;
+      }
+    }
+
+    .react-contextmenu-item {
+      padding: $dropdown-item-padding-y $dropdown-item-padding-x;
+      font-weight: $font-weight-normal;
+      color: $dropdown-link-color;
+    }
+
+    .react-contextmenu-item.react-contextmenu-item--selected {
+      color: $dropdown-link-hover-color;
+      text-decoration: none;
+      @include gradient-bg($dropdown-link-hover-bg);
+    }
+
+    .react-contextmenu-item.react-contextmenu-item--disabled {
+      color: $dropdown-link-disabled-color;
+    }
+
+    .react-contextmenu-item--divider {
+      @include nav-divider($dropdown-divider-bg, $dropdown-divider-margin-y);
+    }
+
+    .react-contextmenu-item.react-contextmenu-submenu>.react-contextmenu-item:after {
+      right: $dropdown-item-padding-x / 2;
+    }
+
+    @include feature-rtl-style {
+      .react-contextmenu-item.react-contextmenu-submenu>.react-contextmenu-item:after {
+        left: $dropdown-item-padding-x / 2;
+      }
+    }
+  }
+}
+
+@if $enable-dark-style {
+  .dark-style {
+    @import "../../styles/_appwork/include-dark";
+
+    .react-contextmenu {
+      z-index: $zindex-dropdown;
+      min-width: $dropdown-min-width;
+      padding: $dropdown-padding-y 0;
+      @include font-size($dropdown-font-size);
+      color: $dropdown-color;
+      background-color: $dropdown-bg;
+      border: $dropdown-border-width solid $dropdown-border-color;
+      @include border-radius($dropdown-border-radius);
+      box-shadow: $dropdown-box-shadow;
+      animation: dropdownAnimation .1s;
+    }
+
+    .react-contextmenu-item {
+      padding: $dropdown-item-padding-y $dropdown-item-padding-x;
+      font-weight: $font-weight-normal;
+      color: $dropdown-link-color;
+    }
+
+    .react-contextmenu-item.react-contextmenu-item--selected,
+    .react-contextmenu-item.react-contextmenu-item--active {
+      color: $dropdown-link-hover-color;
+      text-decoration: none;
+      @include gradient-bg($dropdown-link-hover-bg);
+    }
+
+    .react-contextmenu-item.react-contextmenu-item--disabled {
+      color: $dropdown-link-disabled-color;
+    }
+
+    .react-contextmenu-item--divider {
+      @include nav-divider($dropdown-divider-bg, $dropdown-divider-margin-y);
+    }
+
+    .react-contextmenu-item.react-contextmenu-submenu>.react-contextmenu-item:after {
+      right: $dropdown-item-padding-x / 2;
+    }
+
+    @include feature-rtl-style {
+      .react-contextmenu-item.react-contextmenu-submenu>.react-contextmenu-item:after {
+        left: $dropdown-item-padding-x / 2;
+      }
+    }
+  }
+}

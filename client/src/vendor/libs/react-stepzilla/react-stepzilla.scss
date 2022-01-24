@@ -1,0 +1,568 @@
+@import '../../styles/_custom-variables/libs';
+
+$stepzilla-icon-size: 2.5rem !default;
+$stepzilla-icon-border-width: 2px !default;
+$stepzilla-icon-font-size: 1rem !default;
+$stepzilla-spacer: 2rem !default;
+
+.react-stepzilla {
+  width: 100%;
+
+  > .multi-step {
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+    width: 100%;
+
+  }
+
+  > .multi-step > .footer-buttons {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    padding-top: 1rem;
+
+    button {
+      margin-left: .25rem;
+
+      @include feature-rtl {
+        margin-left: 0;
+        margin-right: .25rem;
+      }
+    }
+  }
+}
+
+ol.progtrckr {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  flex-shrink: 1;
+  flex-direction: row;
+  justify-content: stretch;
+  width: 100%;
+  flex-wrap: wrap;
+  margin: 0;
+
+  em {
+    display: none;
+  }
+
+  li {
+    flex-grow: 1;
+    opacity: .4;
+    position: relative;
+    cursor: default;
+    margin-bottom: 1rem;
+    padding-right: $stepzilla-spacer;
+
+    @include feature-rtl {
+      padding-right: 0;
+      padding-left: $stepzilla-spacer;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+    }
+
+    > span {
+      display: flex;
+      width: 100%;
+      height: 100%;
+    }
+
+    > span > span {
+      position: relative;
+      display: block;
+      width: 100%;
+      flex-direction: column;
+      justify-content: center;
+      padding: 0 0 0 ($stepzilla-icon-size + 1.25rem);
+      min-height: $stepzilla-icon-size;
+      outline: 0 !important;
+      border: 0 !important;
+      background: transparent !important;
+      text-decoration: none;
+      font-weight: 500;
+      cursor: default;
+
+      @include feature-rtl {
+        padding-right: ($stepzilla-icon-size + 1.25rem);
+        padding-left: 0;
+      }
+    }
+  }
+
+  .stepzilla-title,
+  .stepzilla-desctiption {
+    display: block;
+  }
+
+  .stepzilla-desctiption {
+    font-weight: normal;
+  }
+
+  .stepzilla-number,
+  .stepzilla-icon,
+  .stepzilla-done-icon {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    margin-top: -$stepzilla-icon-size / 2;
+    width: $stepzilla-icon-size;
+    height: $stepzilla-icon-size;
+    border: $stepzilla-icon-border-width solid;
+    border-radius: 50%;
+    text-align: center;
+    line-height: calc(#{$stepzilla-icon-size} - #{($stepzilla-icon-border-width * 2)});
+
+    @include feature-rtl {
+      right: 0;
+      left: auto;
+    }
+  }
+
+  .stepzilla-icon,
+  .stepzilla-done-icon {
+    font-size: $stepzilla-icon-font-size;
+  }
+
+  .stepzilla-done-icon {
+    display: none;
+  }
+
+  .stepzilla-number {
+    font-weight: 500;
+  }
+}
+
+ol.progtrckr .progtrckr-doing,
+ol.progtrckr .progtrckr-done {
+  opacity: 1;
+}
+
+ol.progtrckr .progtrckr-done {
+  cursor: pointer;
+
+  .stepzilla-number,
+  .stepzilla-icon,
+  .stepzilla-done-icon {
+    opacity: .4;
+  }
+
+  .stepzilla-done-icon {
+    display: block;
+
+    ~ .stepzilla-icon,
+    ~ .stepzilla-number {
+      display: none;
+    }
+  }
+}
+
+@if $enable-light-style {
+  .light-style {
+    @import "../../styles/_appwork/include";
+
+    ol.progtrckr .stepzilla-desctiption {
+      color: $text-muted;
+      font-size: $font-size-sm;
+    }
+
+    ol.progtrckr .stepzilla-number,
+    ol.progtrckr .stepzilla-icon,
+    ol.progtrckr .stepzilla-done-icon {
+      border-color: $border-color;
+    }
+
+    // Card wizard
+    .react-stepzilla.card {
+      ol.progtrckr {
+        margin-bottom: -1rem;
+        padding: $card-spacer-y $card-spacer-x;
+      }
+
+      > .multi-step > .footer-buttons {
+        padding: $card-spacer-y $card-spacer-x;
+      }
+    }
+
+    // Vertical steps
+    //
+
+    .react-stepzilla-vertical-left,
+    .react-stepzilla-vertical-right {
+      position: relative;
+
+      > .multi-step > .footer-buttons {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+      }
+    }
+
+    @media (min-width: map-get($grid-breakpoints, md)) {
+      .react-stepzilla-vertical-left > .multi-step,
+      .react-stepzilla-vertical-right > .multi-step {
+        flex-direction: row;
+        align-items: stretch;
+      }
+
+      .react-stepzilla-vertical-left ol.progtrckr,
+      .react-stepzilla-vertical-right ol.progtrckr {
+        width: auto;
+        flex-direction: column;
+        flex: 0 0 auto;
+        margin: 0 !important;
+
+        li {
+          flex-grow: 0;
+        }
+
+        ~ *:not(.footer-buttons) {
+          flex: 1 0 auto !important;
+          width: auto !important;
+        }
+      }
+
+      .react-stepzilla-vertical-right {
+        > .multi-step {
+          flex-direction: row-reverse;
+        }
+
+        ol.progtrckr li {
+          padding-right: 0;
+          padding-left: $stepzilla-spacer;
+        }
+
+        > .multi-step > .footer-buttons {
+          justify-content: flex-start;
+        }
+      }
+
+      .react-stepzilla-vertical-left.card,
+      .react-stepzilla-vertical-right.card {
+        ol.progtrckr {
+          padding: $card-spacer-x;
+
+          li {
+            padding: 0 !important;
+          }
+
+          ~ *:not(.footer-buttons) {
+            border-color: transparent !important;
+          }
+        }
+
+        > .multi-step > .footer-buttons {
+          border-top: 1px solid;
+        }
+
+        ol.progtrckr,
+        > .multi-step > .footer-buttons {
+          border-color: $card-inner-border-color !important;
+        }
+      }
+      .react-stepzilla-vertical-left.card ol.progtrckr {
+        border-right: 1px solid;
+      }
+      .react-stepzilla-vertical-right.card ol.progtrckr {
+        border-right: 0;
+        border-left: 1px solid;
+      }
+
+
+      @include feature-rtl-style {
+        .react-stepzilla-vertical-right {
+          ol.progtrckr li {
+            padding-left: 0;
+            padding-right: $stepzilla-spacer;
+          }
+        }
+
+        .react-stepzilla-vertical-left.card ol.progtrckr {
+          border-right: 0;
+          border-left: 1px solid;
+        }
+        .react-stepzilla-vertical-right.card ol.progtrckr {
+          border-left: 0;
+          border-right: 1px solid;
+        }
+      }
+    }
+  }
+}
+
+@if $enable-material-style {
+  .material-style {
+    @import "../../styles/_appwork/include-material";
+
+    ol.progtrckr .stepzilla-desctiption {
+      color: $text-muted;
+      font-size: $font-size-sm;
+    }
+
+    ol.progtrckr .stepzilla-number,
+    ol.progtrckr .stepzilla-icon,
+    ol.progtrckr .stepzilla-done-icon {
+      border-color: $border-color;
+    }
+
+    // Card wizard
+    .react-stepzilla.card {
+      ol.progtrckr {
+        margin-bottom: -1rem;
+        padding: $card-spacer-y $card-spacer-x;
+      }
+
+      > .multi-step > .footer-buttons {
+        padding: $card-spacer-y $card-spacer-x;
+      }
+    }
+
+    // Vertical steps
+    //
+
+    .react-stepzilla-vertical-left,
+    .react-stepzilla-vertical-right {
+      position: relative;
+
+      > .multi-step > .footer-buttons {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+      }
+    }
+
+    @media (min-width: map-get($grid-breakpoints, md)) {
+      .react-stepzilla-vertical-left > .multi-step,
+      .react-stepzilla-vertical-right > .multi-step {
+        flex-direction: row;
+        align-items: stretch;
+      }
+
+      .react-stepzilla-vertical-left ol.progtrckr,
+      .react-stepzilla-vertical-right ol.progtrckr {
+        width: auto;
+        flex-direction: column;
+        flex: 0 0 auto;
+        margin: 0 !important;
+
+        li {
+          flex-grow: 0;
+        }
+
+        ~ *:not(.footer-buttons) {
+          flex: 1 0 auto !important;
+          width: auto !important;
+        }
+      }
+
+      .react-stepzilla-vertical-right {
+        > .multi-step {
+          flex-direction: row-reverse;
+        }
+
+        ol.progtrckr li {
+          padding-right: 0;
+          padding-left: $stepzilla-spacer;
+        }
+
+        > .multi-step > .footer-buttons {
+          justify-content: flex-start;
+        }
+      }
+
+      .react-stepzilla-vertical-left.card,
+      .react-stepzilla-vertical-right.card {
+        ol.progtrckr {
+          padding: $card-spacer-x;
+
+          li {
+            padding: 0 !important;
+          }
+
+          ~ *:not(.footer-buttons) {
+            border-color: transparent !important;
+          }
+        }
+
+        > .multi-step > .footer-buttons {
+          border-top: 1px solid;
+        }
+
+        ol.progtrckr,
+        > .multi-step > .footer-buttons {
+          border-color: $card-inner-border-color !important;
+        }
+      }
+      .react-stepzilla-vertical-left.card ol.progtrckr {
+        border-right: 1px solid;
+      }
+      .react-stepzilla-vertical-right.card ol.progtrckr {
+        border-right: 0;
+        border-left: 1px solid;
+      }
+
+
+      @include feature-rtl-style {
+        .react-stepzilla-vertical-right {
+          ol.progtrckr li {
+            padding-left: 0;
+            padding-right: $stepzilla-spacer;
+          }
+        }
+
+        .react-stepzilla-vertical-left.card ol.progtrckr {
+          border-right: 0;
+          border-left: 1px solid;
+        }
+        .react-stepzilla-vertical-right.card ol.progtrckr {
+          border-left: 0;
+          border-right: 1px solid;
+        }
+      }
+    }
+  }
+}
+
+@if $enable-dark-style {
+  .dark-style {
+    @import "../../styles/_appwork/include-dark";
+
+    ol.progtrckr .stepzilla-desctiption {
+      color: $text-muted;
+      font-size: $font-size-sm;
+    }
+
+    ol.progtrckr .stepzilla-number,
+    ol.progtrckr .stepzilla-icon,
+    ol.progtrckr .stepzilla-done-icon {
+      border-color: $border-color;
+    }
+
+    // Card wizard
+    .react-stepzilla.card {
+      ol.progtrckr {
+        margin-bottom: -1rem;
+        padding: $card-spacer-y $card-spacer-x;
+      }
+
+      > .multi-step > .footer-buttons {
+        padding: $card-spacer-y $card-spacer-x;
+      }
+    }
+
+    // Vertical steps
+    //
+
+    .react-stepzilla-vertical-left,
+    .react-stepzilla-vertical-right {
+      position: relative;
+
+      > .multi-step > .footer-buttons {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+      }
+    }
+
+    @media (min-width: map-get($grid-breakpoints, md)) {
+      .react-stepzilla-vertical-left > .multi-step,
+      .react-stepzilla-vertical-right > .multi-step {
+        flex-direction: row;
+        align-items: stretch;
+      }
+
+      .react-stepzilla-vertical-left ol.progtrckr,
+      .react-stepzilla-vertical-right ol.progtrckr {
+        width: auto;
+        flex-direction: column;
+        flex: 0 0 auto;
+        margin: 0 !important;
+
+        li {
+          flex-grow: 0;
+        }
+
+        ~ *:not(.footer-buttons) {
+          flex: 1 0 auto !important;
+          width: auto !important;
+        }
+      }
+
+      .react-stepzilla-vertical-right {
+        > .multi-step {
+          flex-direction: row-reverse;
+        }
+
+        ol.progtrckr li {
+          padding-right: 0;
+          padding-left: $stepzilla-spacer;
+        }
+
+        > .multi-step > .footer-buttons {
+          justify-content: flex-start;
+        }
+      }
+
+      .react-stepzilla-vertical-left.card,
+      .react-stepzilla-vertical-right.card {
+        ol.progtrckr {
+          padding: $card-spacer-x;
+
+          li {
+            padding: 0 !important;
+          }
+
+          ~ *:not(.footer-buttons) {
+            border-color: transparent !important;
+          }
+        }
+
+        > .multi-step > .footer-buttons {
+          border-top: 1px solid;
+        }
+
+        ol.progtrckr,
+        > .multi-step > .footer-buttons {
+          border-color: $card-inner-border-color !important;
+        }
+      }
+      .react-stepzilla-vertical-left.card ol.progtrckr {
+        border-right: 1px solid;
+      }
+      .react-stepzilla-vertical-right.card ol.progtrckr {
+        border-right: 0;
+        border-left: 1px solid;
+      }
+
+
+      @include feature-rtl-style {
+        .react-stepzilla-vertical-right {
+          ol.progtrckr li {
+            padding-left: 0;
+            padding-right: $stepzilla-spacer;
+          }
+        }
+
+        .react-stepzilla-vertical-left.card ol.progtrckr {
+          border-right: 0;
+          border-left: 1px solid;
+        }
+        .react-stepzilla-vertical-right.card ol.progtrckr {
+          border-left: 0;
+          border-right: 1px solid;
+        }
+      }
+    }
+  }
+}

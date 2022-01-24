@@ -1,0 +1,16 @@
+@mixin react-toastify-variant($variant, $background, $color: null) {
+  $color: if($color, $color, yiq($background));
+
+  .Toastify__toast--#{$variant} {
+    color: $color !important;
+    background: $background !important;
+  }
+
+  .Toastify__progress-bar--#{$variant} {
+    background: $color !important;
+  }
+}
+
+@mixin react-toastify-theme($background, $color: null) {
+  @include react-toastify-variant('default', $background, $color);
+}

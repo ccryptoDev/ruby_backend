@@ -1,0 +1,55 @@
+.callout {
+  padding: $callout-padding;
+  font-size: $callout-font-size;
+  border-left: $callout-border-width solid;
+
+  .callout-link {
+    font-weight: $callout-link-font-weight;
+  }
+
+  hr {
+    border-color: $callout-line-color;
+  }
+
+  p:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.callout-sm {
+  padding: $callout-padding-sm;
+  font-size: $callout-font-size-sm;
+  border-left: $callout-border-width-sm solid;
+}
+
+.callout-lg {
+  padding: $callout-padding-lg;
+  font-size: $callout-font-size-lg;
+  border-left: $callout-border-width-lg solid;
+}
+
+// *******************************************************************************
+// * Variants
+
+@each $color, $value in $theme-colors {
+  @if $color != primary and $color != light {
+    @include appwork-callout-variant('.callout-#{$color}', if($color=='dark'and $dark-style, $white, $value));
+  }
+}
+
+
+// *******************************************************************************
+// * RTL
+
+@include rtl-only {
+  .callout {
+    border-left: 0;
+    border-right: $callout-border-width solid;
+  }
+}
+
+
+
+
+
+

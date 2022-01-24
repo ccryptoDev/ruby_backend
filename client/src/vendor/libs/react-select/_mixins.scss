@@ -1,0 +1,54 @@
+@mixin react-select-validation-state($state, $border) {
+  .is-#{$state}.react-select .react-select__control,
+  .is-#{$state} .react-select .react-select__control {
+    border-color: $border;
+  }
+}
+
+@mixin react-select-variant($background, $color: null) {
+  $color: if($color, $color, yiq($background));
+
+  .react-select__multi-value {
+    background: $background;
+    color: $color;
+  }
+}
+
+@mixin react-select-theme($background, $color: null) {
+  $color: if($color, $color, yiq($background));
+
+  .react-select__control--is-focused {
+    border-color: $background !important;
+  }
+
+  .react-select .react-select__option.react-select__option--is-focused,
+  .react-select .react-select__option:not(.react-select__option--is-disabled):active {
+    background: $background;
+    color: $color;
+  }
+
+  .react-select-primary .react-select__control .react-select__multi-value {
+    background: $background;
+    color: $color;
+  }
+}
+
+@mixin material-react-select-theme($background, $color: null) {
+  $color: if($color, $color, yiq($background));
+
+  .react-select__control--is-focused {
+    border-color: $background !important;
+    box-shadow: 0 -1px 0 0 $background inset !important;
+  }
+
+  .react-select .react-select__option.react-select__option--is-focused,
+  .react-select .react-select__option:not(.react-select__option--is-disabled):active {
+    background: $background;
+    color: $color;
+  }
+
+  .react-select-primary .react-select__control .react-select__multi-value {
+    background: $background;
+    color: $color;
+  }
+}
