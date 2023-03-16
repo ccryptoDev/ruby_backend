@@ -5,3 +5,4 @@ class FinancialTest < ActiveSupport::TestCase
   #   assert true
   # end
 end
+
